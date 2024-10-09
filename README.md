@@ -4,7 +4,7 @@ Anggota Kelompok :
 
 - Andharu Hanif Achmadsyah (2306221062)
 - Kadek Savitri (2306203236)
-- Nur Alya Khairana (2306275701)
+- Nur Alya Khairina (2306275701)
 - Muhammad Hibrizi Farghana (2306165585)
 - Hadyan Fachri (2306245030)
 
@@ -18,7 +18,7 @@ OlehBali adalah solusi bagi wisatawan yang ingin membawa pulang oleh-oleh khas B
 
 Modul untuk mengautentikasi pengguna. Modul ini menangani sistem _login_ bagi pengguna yang memiliki akun, dan _sign up_ bagi pengguna yang belum memiliki akun. Apabila pengguna telah berhasil diautentikasi, pengguna akan diarahkan ke laman utama dari _website_.
 
-Dikerjakan oleh: Nur Alya Khairana
+Dikerjakan oleh: Nur Alya Khairina
 
 ### 1. Profil Pengguna
 
@@ -32,7 +32,7 @@ Rincian fitur modul ini adalah sebagai berikut.
 - Menambah produk ke wishlist dari halaman produk atau katalog dengan sekali klik.
 - Pengguna dapat menghapus produk dari wishlist.
 
-Dikerjakan oleh : Nur Alya Khairana
+Dikerjakan oleh : Nur Alya Khairina
 
 ### 2. Community
 
