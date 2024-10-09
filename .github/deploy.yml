@@ -2,11 +2,11 @@ name: Push to PWS
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
     paths-ignore:
       - "**.md"
   pull_request:
-    branches: [main, master]
+    branches: [main]
     paths-ignore:
       - "**.md"
 
@@ -29,11 +29,17 @@ jobs:
         env:
           PWS_URL: ${{ secrets.PWS_URL }}
         run: |
-          echo "Creating temporary branch"
-          git checkout -b tmp
+          # Check if master branch exists locally
+          if ! git show-ref --verify --quiet refs/heads/master; then
+            echo "Creating master branch"
+            git branch master
+          fi
+
+          # Switch to master branch
+          git checkout master
 
           # Push to master branch and capture the output
-          push_output=$(git push $PWS_URL tmp:master 2>&1)
+          push_output=$(git push $PWS_URL main:master 2>&1)
           if [[ $? -ne 0 ]]; then
             echo "Push failed with output: $push_output"
             echo "Error: Unable to push changes. Please check the error message above and resolve any conflicts manually."
