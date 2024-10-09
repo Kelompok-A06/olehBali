@@ -76,7 +76,7 @@ Dikerjakan oleh : Kadek Savitri
 
 ## Initial Dataset
 
-Kami menmbuat dataset sendiri yang dapat diakses pada tautan berikut
+Kami membuat dataset sendiri yang dapat diakses pada tautan berikut
 
 https://docs.google.com/spreadsheets/d/1-_Qw-E-APXnUjfP884RplJ8l69euEgaW1kpUmjA95uE/edit?usp=sharing
 
