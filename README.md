@@ -14,6 +14,12 @@ OlehBali adalah solusi bagi wisatawan yang ingin membawa pulang oleh-oleh khas B
 
 ## Daftar modul
 
+### 0. Autentikasi
+
+Modul untuk mengautentikasi pengguna. Modul ini menangani sistem _login_ bagi pengguna yang memiliki akun, dan _sign up_ bagi pengguna yang belum memiliki akun. Apabila pengguna telah berhasil diautentikasi, pengguna akan diarahkan ke laman utama dari _website_.
+
+Dikerjakan oleh: Muhammad Hibrizi Farghana
+
 ### 1. Profil Pengguna
 
 Modul ini mencakup detail akun pengguna, pengaturan akun, dan wishlist oleh-oleh yang diminati pengguna.
@@ -26,12 +32,16 @@ Rincian fitur modul ini adalah sebagai berikut.
 - Menambah produk ke wishlist dari halaman produk atau katalog dengan sekali klik.
 - Pengguna dapat menghapus produk dari wishlist.
 
+Dikerjakan oleh : Nur Alya Khairana
+
 ### 2. Community
 
 Modul ini memberikan ruang bagi pengguna untuk berinteraksi dan bertukar informasi mengenai oleh-oleh Bali. Fitur utama dari modul ini meliputi:
 
 - Pengguna dapat membuat posting, memberikan ulasan, atau bertanya tentang pengalaman berbelanja oleh-oleh di Bali.
 - Forum diskusi memungkinkan pengguna berbagi tips, rekomendasi, dan informasi tentang toko atau produk tertentu.
+
+Dikerjakan oleh : Hadyan Fachri
 
 ### 3. Katalog Produk
 
@@ -43,12 +53,16 @@ Modul ini memungkinkan admin untuk mengelola dan menampilkan informasi tentang p
 - Halaman Detail Produk: Ketika pengguna mengklik produk tertentu, mereka akan diarahkan ke halaman detail produk yang menampilkan informasi lebih lengkap, termasuk deskripsi mendetail, foto tambahan, dan opsi untuk menambahkan produk ke wishlist.
 - Kategorisasi Produk: Pemilik toko dapat mengelompokkan produk dalam kategori yang relevan, sehingga memudahkan pengguna dalam menemukan jenis oleh-oleh yang mereka cari.
 
+Dikerjakan oleh : Andharu Hanif Achmadsyah
+
 ### 4. Review
 
 Modul ini memungkinkan pembeli untuk memberikan ulasan dan penilaian tentang toko di website. Fitur-fitur utama dari modul ini meliputi:
 
 - Pembeli dapat mengunggah dan memberikan penilaian bintang (biasanya dari 1 hingga 5) untuk produk berdasarkan pengalaman belanja mereka.
 - Pembeli dapat menulis ulasan yang lebih rinci tentang kualitas produk, layanan pelanggan, atau pengalaman secara keseluruhan.
+
+Dikerjakan oleh : Muhammad Hibrizi Farghana
 
 ### 5. Admin Management
 
@@ -57,6 +71,8 @@ Fitur-fitur dari modul ini meliputi:
 - Admin dapat membuat konten baru di berbagai bagian website, termasuk menambahkan kategori produk, pengumuman, atau informasi baru di halaman utama.
 - Admin dapat meninjau dan melihat semua konten yang sudah ada di website, termasuk halaman, postingan forum, atau ulasan pengguna.
 - Admin dapat menghapus konten, postingan forum, dan ulasan pengguna yang tidak relevan, melanggar kebijakan, atau sudah usang.
+
+Dikerjakan oleh : Kadek Savitri
 
 ## Initial Dataset
 
