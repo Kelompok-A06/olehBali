@@ -1,22 +1,13 @@
+# user_profile/forms.py
+
 from django import forms
+from .models import Profile
+from django.contrib.auth.forms import UserCreationForm
 
-from userprofile.models import Profile
-
-
-class ProfileForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=255)
-    last_name = forms.CharField(max_length=255)
-    email = forms.EmailField()
-
+class UserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = '__all__'
-        exclude = ['user']
+        fields = ['name', 'phone_number', 'email', 'birthdate', 'avatar']
 
-
-def form_validation_error(form):
-    msg = ""
-    for field in form:
-        for error in field.errors:
-            msg += "%s: %s \\n" % (field.label if hasattr(field, 'label') else 'Error', error)
-    return msg
+class DeleteAccountForm(forms.Form):
+    confirm = forms.BooleanField(label="I confirm that I want to delete my account")

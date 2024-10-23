@@ -1,0 +1,14 @@
+<!-- templates/user_profile/dashboard.html -->
+<h2>User Dashboard</h2>
+<p>Name: {{ profile.name }}</p>
+<p>Phone Number: {{ profile.phone_number }}</p>
+<p>Email: {{ profile.email }}</p>
+<p>Birthdate: {{ profile.birthdate }}</p>
+<p>Avatar: <img src="{{ profile.avatar.url }}" alt="Avatar" height="100"></p>
+
+<a href="{% url 'userprofile:edit_profile' %}">Edit Profile</a> |
+<a href="{% url 'userprofile:delete_account' %}">Delete Account</a> 
+
+{% if show_wishlist %}
+  | <a href="{% url 'userprofile:wishlist_dashboard' %}">Wishlist Dashboard</a>
+{% endif %}

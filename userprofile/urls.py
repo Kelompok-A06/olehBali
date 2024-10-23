@@ -1,6 +1,11 @@
 from django.urls import path
-from userprofile.views import login_register, logout_user
+from .views import *
+
+app_name = 'userprofile'
 
 urlpatterns = [
-    path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('dashboard/', dashboard, name='dashboard'),
+    path('edit/', edit_profile, name='edit_profile'),
+    path('delete/', delete_account, name='delete_account'),
+    path('wishlist/', wishlist_dashboard, name='wishlist_dashboard'),
 ]
