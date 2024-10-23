@@ -8,7 +8,7 @@
 <div class="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#FE9642] to-[#FFF4EE] via-[#FE9642] text-black">
     <div class="card w-full max-w-md shadow-xl bg-[#FFF4EE]">
         <!-- Login Form -->
-        <div id="login-form">
+        <div id="login-form" class="hidden">
             <div class="card-body">
                 <h2 class="card-title justify-center font-bold">Login</h2>
                 <div role="tablist" class="tabs tabs-lifted">
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Signup Form -->
-        <div id="signup-form" class="hidden">
+        <div id="signup-form">
             <div class="card-body">
                 <h2 class="card-title justify-center text-black font-bold">Signup</h2>
 
@@ -79,6 +79,9 @@
                         {% endif %}
                     </div>
                     <button type="submit" class="btn btn-primary w-full bg-[#03A4C1] text-white hover:bg-[#0295b3]" name="register">Signup</button>
+                    <div class="text-center mt-4">
+                        <p>Already a member? <a href="#" class="link link-primary" onclick="showLogin()">Sign in</a></p>
+                    </div>
                 </form>
             </div>
         </div>
@@ -88,7 +91,7 @@
             <div class="text-center my-4">
                 {% for message in messages %}
                     {% if message.tags == 'success' %}
-                        <div class="text-[#03A4C1]">{{ message }}</div>
+                        <div id="success-message" class="text-[#03A4C1]">{{ message }}</div>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -97,14 +100,20 @@
 </div>
 
 <script>
-function showLogin() {
-    document.getElementById('login-form').classList.remove('hidden');
-    document.getElementById('signup-form').classList.add('hidden');
-}
+    document.addEventListener('DOMContentLoaded', function () {
+        const successMessage = document.getElementById('success-message');
+        if (successMessage && successMessage.innerHTML.trim() !== "") {
+            showLogin();
+        }
+    });
+    function showLogin() {
+        document.getElementById('login-form').classList.remove('hidden');
+        document.getElementById('signup-form').classList.add('hidden');
+    }
 
-function showSignup() {
-    document.getElementById('login-form').classList.add('hidden');
-    document.getElementById('signup-form').classList.remove('hidden');
-}
+    function showSignup() {
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('signup-form').classList.remove('hidden');
+    }
 </script>
 {% endblock content %}
