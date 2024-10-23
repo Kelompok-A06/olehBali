@@ -1,6 +1,7 @@
 # user_profile/views.py
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.http import HttpResponseRedirect
 from .forms import UserProfileForm, DeleteAccountForm
 from .models import Profile
 from django.contrib import messages
@@ -9,28 +10,36 @@ from django.contrib.auth import logout
 
 
 @login_required
-def dashboard(request):
+def dashboard(request, id):
     # Coba untuk mendapatkan profile terkait user
     try:
-        profile = get_object_or_404(Profile, user=request.user)
+        profile = Profile.objects.get(pk=id)
     except Profile.DoesNotExist:
-        profile = None  # Jika tidak ada profile, kita set ke None
-
+        profile = None
+        
     if profile is None:
-        # Jika profile tidak ada, Anda bisa mengarahkan pengguna ke halaman lain atau memberi pesan
-        messages.error(request, 'Profile not found. Please create a profile.')
-        return redirect('userprofile:dashboard')  # Sesuaikan dengan nama URL untuk membuat profil baru
-
+        form = UserProfileForm(request.POST or None)
+        if form.is_valid() and request.method == "POST":
+            profile_entry= form.save(commit=False)
+            profile_entry.user = request.user
+            profile_entry.save()
+            return redirect('authentication:home')
+    else:
+        form = UserProfileForm(request.POST or None, instance=profile)
+        if form.is_valid() and request.method == "POST":
+            form.save()
+            return HttpResponseRedirect(reverse('authentication:home'))
+        
     if request.user.role == 'user':
         show_wishlist = True
-    else:  # Untuk pemilik toko atau admin
+    else: 
         show_wishlist = False
-
+    
     context = {
         'profile': profile,
         'show_wishlist': show_wishlist,
     }
-    return render(request, 'userprofile/dashboard.html', context)
+    return render(request, 'dashboard.html', context)
 
 
 @login_required
