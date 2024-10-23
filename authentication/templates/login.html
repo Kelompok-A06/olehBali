@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Login/Signup</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#FE9642] to-[#FFF4EE] via-[#FE9642] text-black">
+    <div class="card w-full max-w-md shadow-xl bg-[#FFF4EE]">
+        <!-- Login Form -->
+        <div id="login-form">
+            <div class="card-body">
+                <h2 class="card-title justify-center font-bold">Login</h2>
+                <div role="tablist" class="tabs tabs-lifted">
+                    <button role="tab" class="tab tab-active [--tab-bg:#03A4C1] [--tab-border-color:#03A4C1] text-white font-bold "  onclick="showLogin()">Login</button>
+                    <button role="tab" class="tab" onclick="showSignup()">Signup</button>
+                </div>
+
+                <form method="POST" action="" class="space-y-4">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <input type="text" name="username" placeholder="Username" required class="input w-full bg-[#FFF4EE] border-[#03A4C1]">
+                        {% if login_form.username.errors %}
+                            <div class="text-error">{{ login_form.username.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="form-control">
+                        <input type="password" name="password" placeholder="Password" required class="input w-full bg-[#FFF4EE] border-[#03A4C1]">
+                        {% if login_form.password.errors %}
+                            <div class="text-error">{{ login_form.password.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full bg-[#03A4C1] text-white hover:bg-[#0295b3]" name="login">Login</button>
+                    <div class="text-center mt-4">
+                        <p>Not a member? <a href="#" class="link link-primary" onclick="showSignup()">Signup now!</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signup-form" class="hidden">
+            <div class="card-body">
+                <h2 class="card-title justify-center text-black font-bold">Signup</h2>
+
+                <div role="tablist" class="tabs tabs-lifted">
+                    <button class="tab" onclick="showLogin()">Login</button>
+                    <button class="tab tab-active text-white font-bold [--tab-bg:#03A4C1] [--tab-border-color:#03A4C1]" onclick="showSignup()">Signup</button>
+                </div>
+               
+                <form method="POST" action="" class="space-y-4">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <input type="text" name="username" placeholder="Username" required class="input input-bordered w-full bg-[#FFF4EE] border-[#03A4C1]">
+                        {% if register_form.username.errors %}
+                            <div class="text-error">{{ register_form.username.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="form-control">
+                        <input type="password" name="password1" placeholder="Password" required class="input input-bordered w-full bg-[#FFF4EE] border-[#03A4C1]">
+                        {% if register_form.password1.errors %}
+                            <div class="text-error">{{ register_form.password1.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="form-control">
+                        <input type="password" name="password2" placeholder="Confirm password" required class="input input-bordered w-full bg-[#FFF4EE] border-[#03A4C1]">
+                        {% if register_form.password2.errors %}
+                            <div class="text-error">{{ register_form.password2.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="form-control">
+                        <select name="role" required class="select select-bordered w-full bg-[#FFF4EE] border-[#03A4C1]">
+                            <option value="" disabled selected>Role</option>
+                            <option value="user">User</option>
+                            <option value="owner">Owner</option>
+                        </select>
+                        {% if register_form.role.errors %}
+                            <div class="text-error">{{ register_form.role.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full bg-[#03A4C1] text-white hover:bg-[#0295b3]" name="register">Signup</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        {% if messages %}
+            <div class="text-center my-4">
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        <div class="text-[#03A4C1]">{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function showLogin() {
+    document.getElementById('login-form').classList.remove('hidden');
+    document.getElementById('signup-form').classList.add('hidden');
+}
+
+function showSignup() {
+    document.getElementById('login-form').classList.add('hidden');
+    document.getElementById('signup-form').classList.remove('hidden');
+}
+</script>
+{% endblock content %}
