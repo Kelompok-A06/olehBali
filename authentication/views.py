@@ -33,7 +33,9 @@ def login_register(request):
             if login_form.is_valid():
                 user = login_form.get_user()
                 login(request, user)
-                return redirect('authentication:home') 
+                response = HttpResponseRedirect(reverse("authentication:home"))
+                response.set_cookie('last_login', str(datetime.datetime.now()))
+                return response
             else:
                 messages.error(request, "Invalid username or password. Please try again.")
         
@@ -57,6 +59,6 @@ def login_register(request):
 
 def logout_user(request):
     logout(request)
-    response = HttpResponseRedirect(reverse('authentication:login'))
+    response = HttpResponseRedirect(reverse('authentication:login_register'))
     response.delete_cookie('last_login')
     return response
