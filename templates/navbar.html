@@ -55,6 +55,8 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <button class="btn btn-outline btn-error">Logout</button>
+    <a href="{% url 'authentication:logout' %}">
+      <button class="btn btn-outline btn-error">Logout</button>
+    </a>
   </div>
 </div>
