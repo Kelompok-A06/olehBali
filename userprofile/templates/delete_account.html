@@ -6,4 +6,4 @@
     {{ form.as_p }}
     <button type="submit">Delete Account</button>
 </form>
-<a href="{% url 'user_profile:dashboard' %}">Cancel</a>
+<a href="{% url 'userprofile:dashboard' user.pk %}">Cancel</a>

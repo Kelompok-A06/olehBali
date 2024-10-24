@@ -5,4 +5,4 @@
     {{ form.as_p }}
     <button type="submit">Save Changes</button>
 </form>
-<a href="{% url 'user_profile:dashboard' %}">Back to Dashboard</a>
+<a href="{% url 'userprofile:dashboard' user.pk %}">Back to Dashboard</a>

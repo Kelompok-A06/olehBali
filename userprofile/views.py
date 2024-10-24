@@ -44,20 +44,23 @@ def dashboard(request, id):
 
 @login_required
 def edit_profile(request):
-    profile = get_object_or_404(Profile, user=request.user)
+    # Mengambil atau membuat profile baru jika belum ada
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully.')
-            return redirect('userprofile:dashboard')
+            return redirect('userprofile:dashboard', id=profile.id)
     else:
         form = UserProfileForm(instance=profile)
     
     context = {
         'form': form,
     }
-    return render(request, 'userprofile/edit_profile.html', context)
+    return render(request, 'edit_profile.html', context)
+
 
 @login_required
 def delete_account(request):
@@ -75,7 +78,7 @@ def delete_account(request):
     context = {
         'form': form,
     }
-    return render(request, 'userprofile/delete_account.html', context)
+    return render(request, 'delete_account.html', context)
 
 @login_required
 def wishlist_dashboard(request):
