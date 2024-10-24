@@ -1,0 +1,129 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(45deg, #fe9642, #ffbe98);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.login-container {
+  background: #f9f9f9; /* Use a light gray instead of white */
+  padding: 40px;
+  border-radius: 25px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Slightly softer shadow */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333; /* Keep dark text for contrast */
+  font-size: 28px;
+}
+
+/* Tab buttons */
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 12px 40px;
+  border: none;
+  background: none;
+  color: #03a4c1; /* Use a consistent accent color */
+  cursor: pointer;
+  border-radius: 25px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: #03a4c1; /* Active tab color */
+  color: white;
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+input,
+select {
+  width: 100%;
+  height: 55px;
+  padding: 0 25px 0 80px; /* Increased left padding */
+  border: 2px solid #03a4c1; /* Consistent border color */
+  border-radius: 30px;
+  font-size: 18px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: #fff; /* Keep input backgrounds white */
+}
+
+input::placeholder {
+  color: #999;
+  font-size: 18px;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 25px center;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  height: 55px;
+  background: #03a4c1; /* Primary button color */
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease; /* Add transform for feedback */
+  margin-top: 15px;
+}
+
+.submit-btn:hover {
+  background: #028091; /* Darker shade for hover */
+  transform: scale(1.02); /* Slight scale effect for feedback */
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 520px) {
+  .login-container {
+    margin: 15px;
+    padding: 30px;
+  }
+
+  input,
+  select,
+  .submit-btn {
+    height: 50px;
+    font-size: 16px;
+    padding-left: 70px; /* Adjusted for mobile */
+  }
+
+  input::placeholder {
+    font-size: 16px;
+  }
+}
