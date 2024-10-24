@@ -92,6 +92,8 @@
                 {% for message in messages %}
                     {% if message.tags == 'success' %}
                         <div id="success-message" class="text-[#03A4C1]">{{ message }}</div>
+                    {% else %}
+                        <div id="failed-message" class="text-red-500">{{ message }}</div>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -102,7 +104,8 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const successMessage = document.getElementById('success-message');
-        if (successMessage && successMessage.innerHTML.trim() !== "") {
+        const failedMessage = document.getElementById('failed-message');
+        if (successMessage || failedMessage) {
             showLogin();
         }
     });
