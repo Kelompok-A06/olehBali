@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="flex flex-col justift-center items-center mt-14 mb-8">
-    {% include 'product-description.html' with gambar=product.gambar nama=product.nama deskripsi=product.deskripsi %}  
+    {% include 'product-description.html' with product=product %}  
 </div>
 
 <div id="user_reviews"></div>
@@ -60,11 +60,20 @@
         const reviews = await getReviews();
         let htmlString = "";
         let classNameString = "";
-
+        let totalRatings = 0;
+        let totalElement = 0;
         reviews.forEach((review) => {
-            console.log(review)
+            totalRatings += review.ratings;
+            totalElement++;
             htmlString += `{% include 'user-review.html' with review=review %}`;
         });
+        let tempatRating = document.getElementById("tempat-rating");
+        if (totalElement !== 0) {
+            tempatRating.textContent = (totalRatings / totalElement).toFixed(2);
+        } else {
+            tempatRating.textContent = "Belum ada rating";
+        }
+
         document.getElementById("user_reviews").innerHTML = htmlString;
     }
     refreshReviews();
