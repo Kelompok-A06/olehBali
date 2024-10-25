@@ -7,8 +7,8 @@
             {% csrf_token %}
             <!-- Ratings Field -->
             <div class="form-control">
-                <label class="label text-[#03A4C1]">Rating</label>
-                <select name="ratings" class="select bg-[#C6E0D1] text-black border-[#03A4C1] focus:ring-[#FE9642] focus:border-[#FE9642]">
+                <label for="ratings" class="label text-[#03A4C1]">Rating</label>
+                <select id="ratings" name="ratings" class="select bg-[#C6E0D1] text-black border-[#03A4C1] focus:ring-[#FE9642] focus:border-[#FE9642]">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -20,8 +20,8 @@
 
             <!-- Comments Field -->
             <div class="form-control">
-                <label class="label text-[#03A4C1]">Comments</label>
-                <textarea name="comments" class="textarea bg-[#C6E0D1] text-black border-[#03A4C1] focus:ring-[#FE9642] focus:border-[#FE9642]" rows="4" placeholder="Add your comments..."></textarea>
+                <label for="comments" class="label text-[#03A4C1]">Comments</label>
+                <textarea id="comments" name="comments" class="textarea bg-[#C6E0D1] text-black border-[#03A4C1] focus:ring-[#FE9642] focus:border-[#FE9642]" rows="4" placeholder="Add your comments..."></textarea>
             </div>
             
             <div class="modal-action">

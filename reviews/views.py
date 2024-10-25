@@ -41,10 +41,20 @@ def add_review(request, id):
     product = Product.objects.get(pk=id)
     user = request.user;
 
+    if not comments:
+        return JsonResponse({
+            'status': 'ERROR',
+            'errors': {
+                'name': 'Comments cannot be blank.',
+            }
+        }, status=400)
+
     new_review = Reviews(
         ratings=ratings, comments=comments,
         user=user,product=product,
     )
     new_review.save()
 
-    return HttpResponse(b"CREATED", status=201)
+    return JsonResponse({
+        'status': 'CREATED',
+    }, status=201)

@@ -16,14 +16,38 @@
     }
 
     function addReview() {
+        function removeErrorMessages() {
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.remove();
+            });
+        }
+
         fetch("{% url 'reviews:add_review' product.pk %}", {
           method: "POST",
           body: new FormData(document.querySelector('#reviewForm')),
         })
-        .then(response => refreshReviews())
-        document.getElementById("reviewForm").reset();
-        document.getElementById('review_modal').close()
-        return false;
+        .then(response => {
+            return response.json().then(data => ({
+                status: response.status,
+                body: data
+            }));
+        })
+        .then(({status, body}) => {
+            removeErrorMessages();
+            if (status === 201) {
+                refreshReviews();
+                document.getElementById("reviewForm").reset();
+                document.getElementById('review_modal').close()
+                return false;
+            } else if (status === 400) {
+                let commentField = document.getElementById("comments");
+                let errorMessage = document.createElement("p");
+                errorMessage.className = "text-red-500 text-sm mt-1 error-message";
+                errorMessage.textContent = body.errors.name;
+                console.log(body.errors.name)
+                commentField.parentNode.appendChild(errorMessage);
+            }
+        });
     }
 
     document.getElementById("reviewForm").addEventListener("submit", (e) => {
