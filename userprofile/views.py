@@ -1,15 +1,17 @@
 # user_profile/views.py
 
 from django.shortcuts import render, redirect, get_object_or_404, reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from .forms import UserProfileForm, DeleteAccountForm
 from .models import Profile
+from authentication.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 import os
 import json
 from django.http import JsonResponse
+from django.core import serializers
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_exempt
 
@@ -45,6 +47,10 @@ def dashboard(request, id):
         'show_wishlist': show_wishlist,
     }
     return render(request, 'dashboard.html', context)
+
+def show_user(request, id):
+    user = Profile.objects.filter(pk = id);
+    return HttpResponse(serializers.serialize("json", user), content_type="application/json")
 
 # @login_required
 # def edit_profile(request):
@@ -305,5 +311,7 @@ def delete_account(request):
 @login_required
 def wishlist_dashboard(request):
     # Placeholder untuk wishlist, nanti disesuaikan dengan model wishlist
-    context = {}
-    return render(request, 'userprofile/wishlist_dashboard.html', context)
+    context = {
+        "user": request.user
+    }
+    return render(request, 'wishlist.html', context)

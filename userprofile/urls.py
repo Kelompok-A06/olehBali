@@ -8,4 +8,6 @@ urlpatterns = [
     path('update-profile/<int:id>/', update_profile, name='update_profile'),
     path('delete-account/', delete_account, name='delete_account'),
     path('wishlist/', wishlist_dashboard, name='wishlist_dashboard'),
+    path('json/<int:id>', show_user, name='show_user'),
+
 ]
