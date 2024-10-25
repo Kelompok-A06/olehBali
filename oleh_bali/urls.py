@@ -22,4 +22,5 @@ urlpatterns = [
     path('api/', include('catalog.urls')),
     path('', include('authentication.urls')),
     path('', include('produk.urls')),
+    path('wishlist/', include('wishlist.urls'))
 ]
