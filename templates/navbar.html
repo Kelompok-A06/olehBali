@@ -1,52 +1,62 @@
-<div class="navbar bg-base-100">
-    <div class="navbar-start">
-      <div class="dropdown">
-        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h8m-8 6h16" />
-          </svg>
-        </div>
-        <ul
-          tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-          <li><a>Item 1</a></li>
-          <li>
-            <a>Parent</a>
-            <ul class="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </li>
-          <li><a>Item 3</a></li>
-        </ul>
+{% load static %}
+<div class="navbar bg-white text-black font-bold">
+  <div class="navbar-start p-0 m-0">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
       </div>
-      <a class="btn btn-ghost text-xl">olehBali</a>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1">
-        <li><a>Item 1</a></li>
+      <ul
+      tabindex="0"
+      class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow bg-white">
+        <li><a>Home</a></li>
+        <li><a>Katalog</a></li>
+        <li><a>Wishlist</a></li>
         <li>
           <details>
-            <summary>Parent</summary>
+            <summary>Community</summary>
             <ul class="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
+              <li><a>Forum</a></li>
+              <li><a>Ask Toko</a></li>
             </ul>
           </details>
         </li>
-        <li><a>Item 3</a></li>
       </ul>
     </div>
-    <div class="navbar-end">
-      <a class="btn">Button</a>
+    <a class="btn btn-ghost text-xl">
+      <img src="{% static 'images/olehBali-logo.png' %}" class="inline-block" alt="Logo Oleh Bali" width="50">
+      <span class="text-[#03A4C1] p-0 m-0">oleh<span class="text-[#FE9642] p-0 m-0">Bali</span></span>
+    </a>
     </div>
+    <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a>Home</a></li>
+      <li><a>Katalog</a></li>
+      <li><a>Wishlist</a></li>
+      <li>
+        <details>
+          <summary>Community</summary>
+          <ul class="p-2 bg-white/80">
+            <li><a>Forum</a></li>
+            <li><a>Ask Toko</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
   </div>
+  <div class="navbar-end">
+    <a href="{% url 'authentication:logout' %}">
+      <button class="btn btn-outline btn-error">Logout</button>
+    </a>
+  </div>
+</div>
