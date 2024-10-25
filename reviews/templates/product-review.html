@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block meta %}
+{% endblock meta %}
+{% block content %}
+
+<div class="flex flex-col justift-center items-center mt-14 mb-8">
+    {% include 'product-description.html' with gambar=product.gambar nama=product.nama deskripsi=product.deskripsi %}  
+</div>
+
+
+{% endblock content %}
