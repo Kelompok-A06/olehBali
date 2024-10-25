@@ -1,0 +1,1302 @@
+[
+  {
+    "pk": 1,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Pie Susu",
+      "kategori": "Makanan/Minuman",
+      "harga": 73000,
+      "toko": "Pie Susu Bali Bali Man Enak",
+      "alamat": "Jl. Kerta Dalam VII No.9, Sidakarya, Denpasar Selatan, Denpasar.",
+      "deskripsi": "Pie susu Bali adalah kue khas Bali yang terbuat dari kue pastry yang diisi dengan custard telur dan susu kental manis. Pie susu Bali memiliki bentuk yang datar dengan satu lapisan isian yang tipis.",
+      "gambar": "https://www.piesusuaslienaaak.co.id/wp-content/uploads/2021/05/pieor-upload-400x438.jpg"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kacang Koro Bali",
+      "kategori": "Makanan/Minuman",
+      "harga": 38000,
+      "toko": "Kacang Pulau Bali",
+      "alamat": "Jl. Pemecutan Klod, Denpasar Barat, Denpasar",
+      "deskripsi": "Kacang koro Bali adalah kacang koro yang dipipihkan, memiliki rasa gurih dan renyah.",
+      "gambar": "https://down-id.img.susercontent.com/file/dc05cedf9f14cd332e5cd91b1eb7298e"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Saputan Endek",
+      "kategori": "Kerajinan Tangan",
+      "harga": 160000,
+      "toko": "Galeri Endek",
+      "alamat": "Jl. Tukad Batangahari No 61, Denpasar",
+      "deskripsi": "Kain endek Bali adalah tenun tradisional Bali yang dibuat dengan sistem tenun ikat, yakni dengan mengikat benang pakan dan benang lungsi.",
+      "gambar": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/102/MTA-172930187/no-brand_no-brand_full01.jpg"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Kintamani",
+      "kategori": "Makanan/Minuman",
+      "harga": 44500,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Kopi Kintamani adalah kopi arabika khas Bali yang memiliki ciri khas rasa yang ringan, aroma jeruk.",
+      "gambar": "https://down-id.img.susercontent.com/file/193508ab6a449db69bbd2d01a2e3278d"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Tas Rotan Bulat",
+      "kategori": "Kerajinan Tangan",
+      "harga": 55000,
+      "toko": "Kampung Souvenir",
+      "alamat": "Jl. Mertasari No.50B, Sidakarya, Denpasar Selatan, Kota Denpasar, Bali",
+      "deskripsi": "Tas rotan bulat Bali adalah tas yang dibuat oleh pengrajin di Bali dari bahan rotan.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/product-1/2019/12/27/3982339/3982339_92733b9a-9bf1-409e-813a-bd8f99ef41b6_700_700.jpg"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Tas Ate Rotan Cuklik",
+      "kategori": "Kerajinan Tangan",
+      "harga": 99900,
+      "toko": "Kampung Souvenir",
+      "alamat": "Jl. Mertasari No.50B, Sidakarya, Denpasar Selatan, Kota Denpasar, Bali",
+      "deskripsi": "Tas Ate Rotan Cuklik adalah tas yang terbuat dari serat ate atau rotan, bahan alami yang umum digunakan dalam kerajinan tangan tradisional di Bali. ",
+      "gambar": "https://down-id.img.susercontent.com/file/436e7a5fccf22e6dc430a2005206d696"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Tas Rotan Gendit",
+      "kategori": "Kerajinan Tangan",
+      "harga": 85000,
+      "toko": "Kampung Souvenir",
+      "alamat": "Jl. Mertasari No.50B, Sidakarya, Denpasar Selatan, Kota Denpasar, Bali",
+      "deskripsi": "Tas Rotal Gendit adalah tas tradisional khas Bali yang dibuat dari anyaman rotan.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2022/9/12/be629d88-e2c6-47dd-9151-cab19cf83880.jpg"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Bali Durian Crispy",
+      "kategori": "Makanan/Minuman",
+      "harga": 45000,
+      "toko": "Krisna Bali",
+      "alamat": "Jl. Nusa Indah No 79, Denpasar, Bali",
+      "deskripsi": "Bali Durian Crispy adalah camilan khas Bali yang terbuat dari daging buah durian yang diolah hingga menjadi keripik renyah.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDZHEBfAQ3rHFpqAZ6OD9D4HBCIPV1iZmuAg&s"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Masker Endek",
+      "kategori": "Kerajinan Tangan",
+      "harga": 100000,
+      "toko": "Krisna Bali",
+      "alamat": "Jl. Nusa Indah No 79, Denpasar, Bali",
+      "deskripsi": "Masker Endek adalah masker wajah yang terbuat dari kain Endek, kain tradisional khas Bali. ",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2021/10/17/0891f604-eea0-48d3-a299-e7e6b41d01b6.jpg"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Cabuk",
+      "kategori": "Kerajinan Tangan",
+      "harga": 100000,
+      "toko": "Krisna Bali",
+      "alamat": "Jl. Nusa Indah No 79, Denpasar, Bali",
+      "deskripsi": "Kain Cabuk Bali adalah kain tradisional dari Bali yang dibuat dengan teknik tenun ikat. ",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcFDo4E2jS3hyimrW64iaRtYSkM9mIH022cQ&s"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Dompet Mote Amini",
+      "kategori": "Kerajinan Tangan",
+      "harga": 7000,
+      "toko": "Krisna Bali",
+      "alamat": "Jl. Nusa Indah No 79, Denpasar, Bali",
+      "deskripsi": "Dompet Mote Amini adalah dompet tradisional yang dihiasi dengan mote atau manik-manik kecil, memberikan tampilan yang unik dan menarik.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbUgaWOi6xNiEDsPl85u64NO0l7sWr7Bdswg&s"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Tas Moi Polos ",
+      "kategori": "Kerajinan Tangan",
+      "harga": 175000,
+      "toko": "Krisna Bali",
+      "alamat": "Jl. Nusa Indah No 79, Denpasar, Bali",
+      "deskripsi": "Tas Moi Polos Bali adalah jenis tas yang dibuat secara tradisional di Bali yang terbuat dari bahan alami.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg6u9N-4_KJFU3FmdvKT5rFWCis_11ZI2jMA&s"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Heavenly Chocolate Bali Hazelnut Gianduja",
+      "kategori": "Makanan/Minuman",
+      "harga": 200000,
+      "toko": "Heavenly Chocolate Bali",
+      "alamat": "Waiting Room, Denpasar Airport Jl. Domestic Departure Terminal Ngurah Rai Airport Gate 4, Kabupaten Badung,",
+      "deskripsi": "Cokelat Hazelnut Gianduja adalah jenis cokelat yang dibuat dengan campuran pasta hazelnut dan cokelat, menghasilkan tekstur lembut dan rasa yang kaya serta creamy.",
+      "gambar": "https://images.tokopedia.net/img/cache/200-square/VqbcmM/2024/3/6/28121283-a6f4-4f47-8cc2-6d27374436f2.jpg"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Heavenly Chocolate Bali Dark",
+      "kategori": "Makanan/Minuman",
+      "harga": 187500,
+      "toko": "Heavenly Chocolate Bali",
+      "alamat": "Waiting Room, Denpasar Airport Jl. Domestic Departure Terminal Ngurah Rai Airport Gate 4, Kabupaten Badung,",
+      "deskripsi": "Cokelat Dark Bali adalah jenis cokelat yang dibuat dengan perpaduan cokelat hitam berkualitas tinggi, menghasilkan tekstur halus dengan rasa pahit-manis yang mendalam.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8fmmLLvJm-8YibJZkZpNoSNEhNuvzmQaXWA&s"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Baju Barong Renda",
+      "kategori": "Pakaian",
+      "harga": 40500,
+      "toko": "Krisna Bali",
+      "alamat": "Jl. Nusa Indah No 79, Denpasar, Bali",
+      "deskripsi": "Baju Barong Renda adalah pakaian tradisional Bali yang dihiasi dengan detail renda yang indah. Baju ini biasanya terbuat dari bahan ringan dan memiliki motif Barong.",
+      "gambar": "https://i0.wp.com/shop.krisnabali.co.id/wp-content/uploads/2020/09/Baju-Barong-Bali-Renda-Dewasa-2.jpg?fit=1000%2C1000&ssl=1"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Wiracana Wayang Hand Fan",
+      "kategori": "Kerajinan Tangan",
+      "harga": 133500,
+      "toko": "Wiracana Bali Handfan",
+      "alamat": "Jl. Raya Sesetan 63, Gg. Merpati No.3, Sesetan, Denpasar Selatan, Kota Denpasar, Bali",
+      "deskripsi": "Wiracana Wayang Hand Fan adalah kipas tangan yang unik dan artistik, terinspirasi dari seni wayang tradisional Indonesia.",
+      "gambar": "https://www.wiracana-handfan.com/upload/images/kipas-wayang-warna-b.jpg"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Wiracana Plain Traditional Hand Fan",
+      "kategori": "Kerajinan Tangan",
+      "harga": 45000,
+      "toko": "Wiracana Bali Handfan",
+      "alamat": "Jl. Raya Sesetan 63, Gg. Merpati No.3, Sesetan, Denpasar Selatan, Kota Denpasar, Bali",
+      "deskripsi": "Wiracana Plain Traditional Hand Fan adalah kipas tangan yang terbuat dari kayu mahoni berkualitas tinggi, menonjolkan keindahan dan kekuatan material alami.",
+      "gambar": "https://www.wiracana-handfan.com/upload/images/wiracana-plain-traditional-hand-fan1.jpg"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Wiracana Cocoon Hand Fan",
+      "kategori": "Kerajinan Tangan",
+      "harga": 150000,
+      "toko": "Wiracana Bali Handfan",
+      "alamat": "Jl. Raya Sesetan 63, Gg. Merpati No.3, Sesetan, Denpasar Selatan, Kota Denpasar, Bali",
+      "deskripsi": "Wiracana Cocoon Hand Fan terbuat dari bahan berkualitas tinggi, yaitu kain sutra yang lembut dan mahoni untuk pegangan, memberikan kombinasi estetika dan daya tahan yang sempurna.",
+      "gambar": "https://www.wiracana-handfan.com/upload/images/wiracana-cocoon-hand-fan.jpg"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Magnet Kulkas Pasir Bali",
+      "kategori": "Kerajinan Tangan",
+      "harga": 18750,
+      "toko": "CENTRAMATA",
+      "alamat": "Gg. J No.11, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80225",
+      "deskripsi": "Magnet Kulkas Pasir Bali adalah souvenir unik yang terinspirasi oleh keindahan pantai Bali, terbuat dari pasir asli Bali yang dipadukan dengan desain menarik.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/2/25/0df71cc5-1918-4972-9986-b847377e20fc.png"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Tas Kanvas Bali",
+      "kategori": "Kerajinan Tangan",
+      "harga": 65000,
+      "toko": "CENTRAMATA",
+      "alamat": "Gg. J No.11, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80225",
+      "deskripsi": "Tas Kanvas Bali adalah tas praktis yang terbuat dari bahan kanvas yang kuat dan tahan lama, dihiasi dengan desain yang menggambarkan keindahan budaya Bali.",
+      "gambar": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2023/2/25/84bbee63-7b94-4d64-bcfa-0db10cad0af3.png"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Salak Bali ",
+      "kategori": "Makanan/Minuman",
+      "harga": 30000,
+      "toko": "Toko Salak Bali",
+      "alamat": "Jl. Sumatera No.47, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232",
+      "deskripsi": "Salak Bali, buah tropis dengan kulit bersisik dan daging manis yang segar khas Bali.",
+      "gambar": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-4282580/duta_buah_salak_bali_0-9-1_kg_full02_n1375nxf.jpg"
+    }
+  },
+  {
+    "pk": 22,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bali Original Aluminium",
+      "kategori": "Makanan/Minuman",
+      "harga": 21090,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Kopi luar biasa hasil seleksi biji kopi premium dari dataran tinggi Bali, dipadukan dan disangrai untuk menghasilkan rasa dan aroma khusus Kopi Bali yang kaya rasa, halus dan lembut. Kopi istimewa ini sangat digemari dan telah menjadi pilihan para penikmat kopi.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2024/2/20/f63cf917-5af9-4e3b-bf16-48c27f395e70.jpg"
+    }
+  },
+  {
+    "pk": 23,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Totebag Bali",
+      "kategori": "Kerajinan Tangan",
+      "harga": 75000,
+      "toko": "Unagi Handicrafts",
+      "alamat": "Jl. Teuku Umar Barat Jl. Marlboro No.383, Padangsambian Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80117",
+      "deskripsi": "Totebag Bali dengan motif khas, praktis dan cocok untuk digunakan sehari-hari.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg362XGLnXXj2VTnamZ86ebzuZTRAERbGaIA&s"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kebaya Bali",
+      "kategori": "Pakaian",
+      "harga": 100000,
+      "toko": "MD Kebaya Bali",
+      "alamat": "Jl. Griya Anyar, Pemogan, Denpasar Selatan, Kota Denpasar, Bali",
+      "deskripsi": "Kebaya Bali elegan yang menampilkan keindahan budaya Bali dalam setiap detailnya.",
+      "gambar": "https://i.pinimg.com/736x/a7/09/63/a70963abc5c27223876a6082ad4aa678.jpg"
+    }
+  },
+  {
+    "pk": 25,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kaos Barong",
+      "kategori": "Pakaian",
+      "harga": 40500,
+      "toko": "Krisna Oleh-Oleh Bali",
+      "alamat": "Jl. Nusa Indah No.77, Sumerta, Kec. Denpasar Tim., Kota Denpasar, Bali 80236",
+      "deskripsi": "Kaos Barong dengan desain ikonik, cocok untuk oleh-oleh khas Bali.",
+      "gambar": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/93/MTA-120831347/no-brand_kaos-barong-bali-kaos-anak-barong-bali-3d-terlaris-lp3d-a91-dewasa_full01.jpg"
+    }
+  },
+  {
+    "pk": 26,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kaos Lost in Bali",
+      "kategori": "Pakaian",
+      "harga": 86500,
+      "toko": "Krisna Oleh-Oleh Bali",
+      "alamat": "Jl. Nusa Indah No.77, Sumerta, Kec. Denpasar Tim., Kota Denpasar, Bali 80236",
+      "deskripsi": "Kaos Lost in Bali dengan desain santai, ideal untuk para pecinta Bali.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHodDgINDU7t9JYkYV_kGKt2JIWXnLJMQM1g&s"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Daster Barong",
+      "kategori": "Pakaian",
+      "harga": 155000,
+      "toko": "Krisna Oleh-Oleh Bali",
+      "alamat": "Jl. Nusa Indah No.77, Sumerta, Kec. Denpasar Tim., Kota Denpasar, Bali 80236",
+      "deskripsi": "Daster Barong nyaman dan modis, terinspirasi dari budaya tradisional Bali.",
+      "gambar": "https://s2.bukalapak.com/img/75830698542/large/data.jpg"
+    }
+  },
+  {
+    "pk": 28,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kacang Disko Krisna Bali",
+      "kategori": "Makanan/Minuman",
+      "harga": 14000,
+      "toko": "Krisna Oleh-Oleh Bali",
+      "alamat": "Jl. Nusa Indah No.77, Sumerta, Kec. Denpasar Tim., Kota Denpasar, Bali 80236",
+      "deskripsi": "Kacang Disko Krisna Bali, camilan gurih khas Bali yang populer.",
+      "gambar": "https://down-id.img.susercontent.com/file/390126fdd2910a450de38a245906c89b"
+    }
+  },
+  {
+    "pk": 29,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bubuk Bali Sujati 200gr",
+      "kategori": "Makanan/Minuman",
+      "harga": 30000,
+      "toko": "Kopi Bali Sujati Roastery",
+      "alamat": "Jl. Gn. Cemara VII C No.8, Tegal Harum, Kec. Denpasar Bar., Kota Denpasar, Bali 80119",
+      "deskripsi": "Kopi Bubuk Bali Sujati 200gr, kopi asli Bali dengan cita rasa yang kuat dan khas.",
+      "gambar": "https://down-id.img.susercontent.com/file/3051c3bf4a955274e1dfeeb9b28f9a4e"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Kebaya Sofiah\r\n",
+      "kategori": "Pakaian",
+      "harga": 195000,
+      "toko": "Krisna Oleh-Oleh Bali",
+      "alamat": "Jl. Nusa Indah No.77, Sumerta, Kec. Denpasar Tim., Kota Denpasar, Bali 80236",
+      "deskripsi": "Kain Kebaya Sofiah, bahan kain berkualitas tinggi untuk kebaya yang anggun.",
+      "gambar": "https://shop.krisnabali.co.id/wp-content/uploads/2020/10/Kain-Kebaya-Sofiah.jpg"
+    }
+  },
+  {
+    "pk": 31,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Robusta Bali Sujati 200gr",
+      "kategori": "Makanan/Minuman",
+      "harga": 70000,
+      "toko": "Kopi Bali Sujati Roastery",
+      "alamat": "Jl. Gn. Cemara VII C No.8, Tegal Harum, Kec. Denpasar Bar., Kota Denpasar, Bali 80119",
+      "deskripsi": "Kopi Robusta Bali Sujati 200gr, kopi robusta Bali yang kaya akan rasa dan aroma.",
+      "gambar": "https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/2/23/53b74b24-e13a-407c-8932-9dab2c448501.jpg"
+    }
+  },
+  {
+    "pk": 32,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Arabica Bali Sujati 200gr",
+      "kategori": "Makanan/Minuman",
+      "harga": 70000,
+      "toko": "Kopi Bali Sujati Roastery",
+      "alamat": "Jl. Gn. Cemara VII C No.8, Tegal Harum, Kec. Denpasar Bar., Kota Denpasar, Bali 80120",
+      "deskripsi": "Kopi Arabica Bali Sujati 200gr, kopi arabika Bali dengan rasa yang halus dan lembut.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/4/5/bb8ed134-b322-40b3-965a-8b2e2b59c7b8.jpg"
+    }
+  },
+  {
+    "pk": 33,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Bali Buda Virgin Coconut Oil 300ml",
+      "kategori": "Makanan/Minuman",
+      "harga": 67000,
+      "toko": "Renon Shop & Caf\u00e9",
+      "alamat": "Jl. Raya Puputan No.108, Sumerta Kelod, Kec. Denpasar Tim., Kota Denpasar, Bali 80234",
+      "deskripsi": "Diolah dengan cara cold-pressed dan bersumber dari kelapa segar yang dipetik langsung dari Sulawesi Barat. Dikupas, diperas, dan dikemas langsung kurang dari satu jam untuk menjaga kesegaran dan kebaikan alaminya. ",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyl_wtsSwbri-bgMsUgoFii34KDlAtUPwu-Q&s"
+    }
+  },
+  {
+    "pk": 34,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Bali Buda Peanut Butter",
+      "kategori": "Makanan/Minuman",
+      "harga": 54000,
+      "toko": "Renon Shop & Caf\u00e9",
+      "alamat": "Jl. Raya Puputan No.108, Sumerta Kelod, Kec. Denpasar Tim., Kota Denpasar, Bali 80235",
+      "deskripsi": "Dibuat dari kacang tanah yang dipanen dari kebun setempat dan sejumput garam laut Bali. ",
+      "gambar": "https://balibuda.com/wp-content/uploads/2020/06/balibuda-peanut-butter-back.jpg"
+    }
+  },
+  {
+    "pk": 35,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bali Legong Kraton 200gr",
+      "kategori": "Makanan/Minuman",
+      "harga": 32000,
+      "toko": "Krisna Oleh-Oleh Bali",
+      "alamat": "Jl. Nusa Indah No.77, Sumerta, Kec. Denpasar Tim., Kota Denpasar, Bali 80236",
+      "deskripsi": "Kopi Bali LEGONG KRATON adalah oleh oleh khas Bali berupa kopi bubuk dengan berat bersih 200gr produk ini menjadi salah satu minuman populer khas pulau dewata.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/1/ced58b4e-bf26-409c-a2c1-36e2fd4f035c.jpg"
+    }
+  },
+  {
+    "pk": 36,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Bali Buda Golden Ginger Ale ",
+      "kategori": "Makanan/Minuman",
+      "harga": 35000,
+      "toko": "Renon Shop & Caf\u00e9",
+      "alamat": "Jl. Raya Puputan No.108, Sumerta Kelod, Kec. Denpasar Tim., Kota Denpasar, Bali 80234",
+      "deskripsi": "Minuman bersoda dan menyegarkan yang memadukan sensasi jahe klasik dengan sentuhan kunyit. Setiap botolnya memberikan kenikmatan yang murni. Golden Ginger Ale yang sedikit bersoda ini memberi penghormatan kepada ginger ale klasik yang tak lekang oleh waktu, dengan campuran emas kontemporer.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsOs_x1Exodq8YzlT3ZQ-BDo4L0p4GflxLIA&s"
+    }
+  },
+  {
+    "pk": 37,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Pia Legong",
+      "kategori": "Makanan/Minuman",
+      "harga": 120000,
+      "toko": "Krisna Oleh-Oleh Bali",
+      "alamat": "Jl. Nusa Indah No.77, Sumerta, Kec. Denpasar Tim., Kota Denpasar, Bali 80236",
+      "deskripsi": "Pia Legong, kue pia khas Bali dengan kulit renyah dan isian lembut yang manis.",
+      "gambar": "https://paxelmarket.co/wp-content/uploads/2022/08/pia-legong-mix.jpg"
+    }
+  },
+  {
+    "pk": 38,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Bakpia Ajik 20 pcs",
+      "kategori": "Makanan/Minuman",
+      "harga": 49500,
+      "toko": "Krisna Oleh-Oleh Bali",
+      "alamat": "Jl. Nusa Indah No.77, Sumerta, Kec. Denpasar Tim., Kota Denpasar, Bali 80236",
+      "deskripsi": "Bakpia Ajik Bali adalah oleh-oleh khas dari Pulau Bali. Halal, enak dan lezat untuk dikonsumsi baik kalangan orang dewasa sampai ke anak-anak.\r\n",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqkxJ2wOVs_dsUa9rmSO5QkzKMjrqOjrJVMQ&s"
+    }
+  },
+  {
+    "pk": 39,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kripik Pisang Pulau Bali Rasa Manis 125gr",
+      "kategori": "Makanan/Minuman",
+      "harga": 18000,
+      "toko": "Kacang Pulau Bali",
+      "alamat": "Pemecutan Klod, Denpasar Barat, Denpasar City, Bali 80118",
+      "deskripsi": "Kripik pisang Pulau Bali rasa manis. Diproduksi dari bahan baku pisang pilihan, tanpa ada bahan kimia ataupun pengawet!",
+      "gambar": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//89/MTA-37143413/brd-44261_kripik-pisang-pulau-bali-rasa-manis-125gram-kripik-pisang-asli-bali_full01.jpg"
+    }
+  },
+  {
+    "pk": 40,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kacang Pulau Bali Kacang Kapri 250gr",
+      "kategori": "Makanan/Minuman",
+      "harga": 22000,
+      "toko": "Kacang Pulau Bali",
+      "alamat": "Pemecutan Klod, Denpasar Barat, Denpasar City, Bali 80119",
+      "deskripsi": "Kacang Pulau Bali Kacang Kapri 250gr, kacang kapri renyah khas Bali dengan rasa gurih yang nikmat.",
+      "gambar": "https://img.ws.mms.shopee.co.id/35462050ab823b72548a834309792890"
+    }
+  },
+  {
+    "pk": 41,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Luwak Blend Robusta",
+      "kategori": "Makanan/Minuman",
+      "harga": 122100,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Luwak Blend adalah campuran antara biji kopi Robusta pilihan dikombinasikan dengan rasa yang kuat dari biji kopi Luwak.",
+      "gambar": "https://bhinekadjaja.com/upload/produk/qbfg4j2yvaly0ta02r8z.jpeg"
+    }
+  },
+  {
+    "pk": 42,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kacang Ajik",
+      "kategori": "Makanan/Minuman",
+      "harga": 22500,
+      "toko": "Krisna Oleh - Oleh Bali",
+      "alamat": "Jl. Nusa Indah No 79, Denpasar, Bali",
+      "deskripsi": "Kacang Ajik memiliki ukuran kacang tanah yang besar-besar, renyah dan sangat cocok untuk menemani kalian di segala aktivitas.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTTy-Gto_V0HMyW7CAhKAhDTvRTxbKip_M0A&s"
+    }
+  },
+  {
+    "pk": 43,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Heavenly Chocolate Bali Extra Dark",
+      "kategori": "Makanan/Minuman",
+      "harga": 215000,
+      "toko": "Heavenly Chocolate Bali",
+      "alamat": "Waiting Room, Denpasar Airport Jl. Domestic Departure Terminal Ngurah Rai Airport Gate 4, Kabupaten Badung,",
+      "deskripsi": "Cokelat Extra Dark Bali adalah pilihan istimewa bagi penggemar cokelat hitam yang menawarkan cita rasa kaya dan intens",
+      "gambar": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2024/10/2/d62504b3-637d-4e02-a05b-b5d4c16b4b92.jpg"
+    }
+  },
+  {
+    "pk": 44,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Pie Kacang",
+      "kategori": "Makanan/Minuman",
+      "harga": 55000,
+      "toko": "Krisna Oleh - Oleh Bali",
+      "alamat": "Jl. Nusa Indah No 79, Denpasar, Bali",
+      "deskripsi": "Pie yang ditaburi dengan Kacang dan Mente, diolah dengan butter premium, dipanggang dengan kering sehingga menghasilkan rasa yang krispi dan enak.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8dMZGW9fMWoQujqM7LQE2S9EF5fDXfdJIA&s"
+    }
+  },
+  {
+    "pk": 45,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Udeng",
+      "kategori": "Pakaian",
+      "harga": 81000,
+      "toko": "Ws Collection",
+      "alamat": "Jl. Pulau Misol 1 No.11, Dauh Puri Kauh, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Udeng merupakan pakaian adat khas bali yang biasa digunakan oleh laki - laki berupa ikat kepala.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2024/2/22/c96dd6f8-5178-4593-a4cf-d33b65fa2203.png"
+    }
+  },
+  {
+    "pk": 46,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Patung Kucing",
+      "kategori": "Kerajinan Tangan",
+      "harga": 35000,
+      "toko": "Pasar Seni Bali",
+      "alamat": "Pasar Seni Pagi Grosir, JL. Letnan satu Wayan Sutha I, No. 100x - 101x, Gianyar, Sukawati, Kec. Sukawati, Kabupaten Gianyar, Bali 80582",
+      "deskripsi": "Patung kucing biasanya terbuat dari kayu dengan warna yang unik dan pose - pose lucu. Disukai oleh wisatawan jepang karena dipercaya membawa keberuntungan.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbaH5O49ARDywe5cz4Ef-75Xi5m7lMP1srtw&s"
+    }
+  },
+  {
+    "pk": 47,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Topeng Ukir",
+      "kategori": "Kerajinan Tangan",
+      "harga": 200000,
+      "toko": "Pasar Seni Guwang",
+      "alamat": "Jl. Dasarata, Guwang, Kec. Sukawati, Kabupaten Gianyar, Bali 80582",
+      "deskripsi": "Topeng ukir selain berbentuk wajah, juga ada bentuk-bentuk lain seperti barong dan leak. Oleh-oleh yang satu ini memang memiliki kesan yang seram bagi orang yang tidak terbiasa.",
+      "gambar": "https://indonesiakaya.com/wp-content/uploads/2020/10/10__IMG_4964_Karakter_topeng_Sugriwa_yang_merupakan_bagian_dari_kisah_epos_Ramayana_2.jpg"
+    }
+  },
+  {
+    "pk": 48,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Lukisan Bali",
+      "kategori": "Lain - Lain",
+      "harga": 10000000,
+      "toko": "Lukisan Sukawati",
+      "alamat": "Pasar Seni Sukawati",
+      "deskripsi": "Tergantung request",
+      "gambar": "https://www.khrisnabalidwipa.com/userfiles/travel/destination/KBD-Pasar_Seni_Sukawati-03.jpg"
+    }
+  },
+  {
+    "pk": 49,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Pia Agung Bali",
+      "kategori": "Makanan/Minuman",
+      "harga": 92500,
+      "toko": "Pia Agung Bali",
+      "alamat": "Komplek Ruko Kuta Megah No.5, Jl. Bypass Ngurah Rai, Tuban,- Bali",
+      "deskripsi": "Pia Agung Bali merupakan oleh-oleh kekinian pia khas bali yang memiliki 8 varian rasa. Best seller dari Pia Agung Bali yaitu varian durian, sesuai dengan tagline-nya #piadurianpalingjoss.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/11/25/ea93740c-3993-4c09-bbef-a88a3f77e9b0.jpg"
+    }
+  },
+  {
+    "pk": 50,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Pia Eiji Bali",
+      "kategori": "Kerajinan Tangan",
+      "harga": 96000,
+      "toko": "Pia Eiji Bali",
+      "alamat": "Jl. Bedahulu VII No.7, Dauh Puri Kaja, Kec. Denpasar Utara, Kota Denpasar, Bali 80233",
+      "deskripsi": "Pia Eiji hadir menjadi salah satu Oleh-Oleh Khas Bali. Bagi para wisatawan yang berkunjung ke Pulau Dewata, Pia Eiji wajib menjadi salah satu oleh-oleh untuk anda beli. Karena Pia Eiji diproduksi secara handmade dengan menjamin ingredients yang terbaik dan tanpa menggunakan bahan pengawet. Pia Eiji selalu hadir freshly made everyday dengan menjaga rasa dan kualitas untuk menjaga kepercayaan anda kepada Pia Eiji.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5oZ2hqrWa3FkipT7ugrV4NaQdbmM3lcLw4Q&s"
+    }
+  },
+  {
+    "pk": 51,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Batik Sarong Motif Belanda",
+      "kategori": "Pakaian",
+      "harga": 3635000,
+      "toko": "Phalam Batik",
+      "alamat": "Jl. W.R. Supratman No.333, Tohpati, Denpasar, Bali \u2013 Indonesia",
+      "deskripsi": "Ketika Belanda pertama kali datang ke Indonesia, mereka datang dengan perahu layar dan beberapa wanita cantik di atasnya. Itulah sebabnya motif Belanda biasanya menampilkan perahu layar besar atau wanita yang mengenakan gaun bunga bergaya Eropa.",
+      "gambar": "https://phalambatik.thephala.com/site/wp-content/uploads/2016/04/product2b-300x300.jpg"
+    }
+  },
+  {
+    "pk": 52,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Batik Sarong Motif Buketan",
+      "kategori": "Pakaian",
+      "harga": 4675000,
+      "toko": "Phalam Batik",
+      "alamat": "Jl. W.R. Supratman No.333, Tohpati, Denpasar, Bali \u2013 Indonesia",
+      "deskripsi": "Motif buketan adalah motif yang menggunakan tumbuh-tumbuhan atau bunga sebagai hiasan atau dekorasi yang disusun membujur lebar kain.",
+      "gambar": "https://phalambatik.thephala.com/site/wp-content/uploads/2017/03/product11b-300x300.jpg"
+    }
+  },
+  {
+    "pk": 53,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Batik Sarong Motif Cuwiri",
+      "kategori": "Pakaian",
+      "harga": 4995000,
+      "toko": "Phalam Batik",
+      "alamat": "Jl. W.R. Supratman No.333, Tohpati, Denpasar, Bali \u2013 Indonesia",
+      "deskripsi": "Batik dengan motif cuwiri biasanya digunakan oleh wanita yang sedang hamil atau untuk menggendong bayi. Motif ini dipercaya dapat mendatangkan keharmonisan di kemudian hari dengan bayi.",
+      "gambar": "https://phalambatik.thephala.com/site/wp-content/uploads/2017/03/product4b-300x300.jpg"
+    }
+  },
+  {
+    "pk": 54,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Batik Silik Motif Lung-Lungan",
+      "kategori": "Pakaian",
+      "harga": 5325000,
+      "toko": "Phalam Batik",
+      "alamat": "Jl. W.R. Supratman No.333, Tohpati, Denpasar, Bali \u2013 Indonesia",
+      "deskripsi": "Lung-lungan artinya tanaman yang merambat, mempunyai filosofi siapa yang memakai batik jenis ini akan hidupnya akan terus tumbuh dan sukses.",
+      "gambar": "https://phalambatik.thephala.com/site/wp-content/uploads/2017/03/product9b-300x300.jpg"
+    }
+  },
+  {
+    "pk": 55,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bali Kintanami",
+      "kategori": "Makanan/Minuman",
+      "harga": 33300,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Kopi terbaik di Bali ditanam di dataran tertinggi di utara Pulau Bali, wilayah pegunungan yang dikenal sebagai Kintamani, dimana iklim dingin dan tanah vulkanik memberikan lingkungan yang sangat menguntungkan bagi tanaman kopi arabika.",
+      "gambar": "https://bhinekadjaja.com/upload/produk/04kstjef6u3j7yk9ozgc.png"
+    }
+  },
+  {
+    "pk": 56,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi best of bali",
+      "kategori": "Makanan/Minuman",
+      "harga": 66600,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Kopi Best of Bali merupakan perpaduan 3 jenis blend dari kopi Bali yang dibuat dari biji kopi pilihan sehingga menghasilkan kenikmatan dan aroma khas produk Kopi Kupu-Kupu Bola Dunia.",
+      "gambar": "https://bhinekadjaja.com/upload/produk/1ykbthjqpjlyoccblhpq.jpeg"
+    }
+  },
+  {
+    "pk": 57,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Karung Bali Supremo",
+      "kategori": "Makanan/Minuman",
+      "harga": 49950,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Dari kopi arabika Indonesia yang dipilih dan diproses dengan sebaik mungkin untuk mendapatkan cita rasa kopi yang nikmat dari secangkir kopi yang penuh rasa.",
+      "gambar": "https://bhinekadjaja.com/upload/produk/rret2gnnhqi2rw0rapim.png"
+    }
+  },
+  {
+    "pk": 58,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bali Gold Tas",
+      "kategori": "Makanan/Minuman",
+      "harga": 33300,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Berbahan baku dari biji kopi Arabika Indonesia yang menciptakan cita rasa penuh, kuat dan kaya rasa untuk menghasilkan secangkir kopi dengan aroma yang mengagumkan.",
+      "gambar": "https://bhinekadjaja.com/upload/produk/rret2gnnhqi2rw0rapim.png"
+    }
+  },
+  {
+    "pk": 59,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bali Gold Coffee",
+      "kategori": "Makanan/Minuman",
+      "harga": 33300,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Kopi luar biasa hasil seleksi biji kopi premium dari dataran tinggi Bali, dipadukan dan disangrai untuk menghasilkan rasa dan aroma khusus Kopi Bali yang kaya rasa, halus dan lembut.",
+      "gambar": "https://bhinekadjaja.com/upload/produk/84y6pvv9zngzec17z7u1.jpeg"
+    }
+  },
+  {
+    "pk": 60,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Organic Bali",
+      "kategori": "Makanan/Minuman",
+      "harga": 22200,
+      "toko": "Bhineka Djaja",
+      "alamat": "Jl. Gajah Mada No. 80 Denpasar, Bali",
+      "deskripsi": "Kopi Organik Bali menawarkan 100% kopi organik yang utuh dikarenakan faktor tanah, ketinggian, jenis kopi, metode pemprosesan dan umur. Kopi Organik Bali menawarkan kopi yang lembut dan manis dengan kekentalan yang sangat baik.",
+      "gambar": "https://bhinekadjaja.com/upload/produk/zgfur32kd323elsejibo.jpeg"
+    }
+  },
+  {
+    "pk": 61,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kacang disko kecak mama",
+      "kategori": "Makanan/Minuman",
+      "harga": 17500,
+      "toko": "KACANG DISCO KECAK MAMA",
+      "alamat": "Jl. Siulan .Br.laplap. Tim, Penatih, Kec. Denpasar Tim., Kota Denpasar, Bali 80237",
+      "deskripsi": "Kacang Disco Kecak Mama, Kacang yang dibalur tepung berbumbu dengan berbagai macam pilihan rasa.",
+      "gambar": "https://down-id.img.susercontent.com/file/f5f054d3a5a3c96fa3f9210e7d5d2104"
+    }
+  },
+  {
+    "pk": 62,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kacang disko rajawali",
+      "kategori": "Makanan/Minuman",
+      "harga": 36999,
+      "toko": "Kacang Rajawali Bali",
+      "alamat": "Gg. Bulan No.2, Ubung Kaja, Kec. Denpasar Utara, Kota Denpasar, Bali 80115",
+      "deskripsi": "Kacang Disco RAJAWALI ini adalah salah satu camilan yang cocok dikonsumsi disegala situasi, Dengan kacang diselimuti tepung yang Gurih dan Renyah\u2026 Kriuk nya kacang Disco RAJAWALI bikin lidahh ketagihan\u2026",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoEhQmHTRkRLMkx26HC4Dhxt7pZpRncMl4bg&s"
+    }
+  },
+  {
+    "pk": 63,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Brem Seruling",
+      "kategori": "Makanan/Minuman",
+      "harga": 20500,
+      "toko": "Kacang Rajawali Bali",
+      "alamat": "Gg. Bulan No.2, Ubung Kaja, Kec. Denpasar Utara, Kota Denpasar, Bali 80116",
+      "deskripsi": "Brem Seruling adalah salah satu brem Bali yang menjadi oleh-oleh khas Bali",
+      "gambar": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2020/11/25/0f5d7e50-2d0e-4430-814d-cbc22f94abe2.jpg.webp?ect=4g"
+    }
+  },
+  {
+    "pk": 64,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Udeng Batik Semi Tulis",
+      "kategori": "Pakaian",
+      "harga": 50000,
+      "toko": "Rakamangunbali",
+      "alamat": "Jl. Pulau Buton No.4, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Udeng menggunakan bahan katun dan batik semi tulis",
+      "gambar": "https://down-id.img.susercontent.com/file/sg-11134201-22110-u2cepy41dbkv5a@resize_w900_nl.webp"
+    }
+  },
+  {
+    "pk": 65,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Saputan Blanket",
+      "kategori": "Pakaian",
+      "harga": 150000,
+      "toko": "Rakamangunbali",
+      "alamat": "Jl. Pulau Buton No.4, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80114",
+      "deskripsi": "Selimut tradisional yang dibuat dengan teknik tenun tangan khas Bali",
+      "gambar": "https://down-id.img.susercontent.com/file/id-11134207-7qukx-lkj8isu1ky8ke6@resize_w900_nl.webp"
+    }
+  },
+  {
+    "pk": 66,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Saputan Indigo",
+      "kategori": "Pakaian",
+      "harga": 200000,
+      "toko": "Rakamangunbali",
+      "alamat": "Jl. Pulau Buton No.4, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80115",
+      "deskripsi": "Kain saputan yang diwarnai menggunakan pewarna alami indigo, memberikan warna biru khas pada kain tradisional.",
+      "gambar": "https://down-id.img.susercontent.com/file/id-11134207-7qul1-lkj53njdbwaq2e@resize_w900_nl.webp"
+    }
+  },
+  {
+    "pk": 67,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Saputan Jumputan",
+      "kategori": "Pakaian",
+      "harga": 135000,
+      "toko": "Rakamangunbali",
+      "alamat": "Jl. Pulau Buton No.4, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80116",
+      "deskripsi": "Kain saputan yang dihias dengan teknik jumputan, menciptakan pola tie-dye yang unik dan menarik.",
+      "gambar": "https://down-id.img.susercontent.com/file/id-11134207-7quky-lkj3hrjh1oowe4@resize_w900_nl.webp"
+    }
+  },
+  {
+    "pk": 68,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kamen Batik",
+      "kategori": "Pakaian",
+      "harga": 75000,
+      "toko": "Rakamangunbali",
+      "alamat": "Jl. Pulau Buton No.4, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80117",
+      "deskripsi": " Kain batik yang digunakan sebagai bawahan atau sarung tradisional dalam upacara adat di berbagai daerah di Indonesia.",
+      "gambar": "https://down-id.img.susercontent.com/file/sg-11134201-22110-0q99tmq5dbkv24.webp"
+    }
+  },
+  {
+    "pk": 69,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kebaya Baisakhi",
+      "kategori": "Pakaian",
+      "harga": 2375000,
+      "toko": "Uluwatu Handmade Balinese Lace",
+      "alamat": "Jl. Bypass Ngurah Rai No.59, Suwung Kangin, Denpasar Sel., Kota Denpasar, Bali 80224",
+      "deskripsi": "Kebaya yang terinspirasi dari perayaan Baisakhi, biasanya dengan desain penuh warna dan ornamen yang meriah.",
+      "gambar": "https://uluwatu.co.id/cdn/shop/products/Baisakhi-Kebaya-Black-1.jpg?crop=center&height=2100&v=1675242725&width=1400"
+    }
+  },
+  {
+    "pk": 70,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kebaya Shrilekha",
+      "kategori": "Pakaian",
+      "harga": 3035000,
+      "toko": "Uluwatu Handmade Balinese Lace",
+      "alamat": "Jl. Bypass Ngurah Rai No.59, Suwung Kangin, Denpasar Sel., Kota Denpasar, Bali 80225",
+      "deskripsi": "Kebaya dengan desain modern yang dipadukan dengan motif tradisional, memberikan kesan elegan dan kontemporer.",
+      "gambar": "https://uluwatu.co.id/cdn/shop/products/ULUWATUKEBAYA1.webp?crop=center&height=900&v=1673245208&width=600"
+    }
+  },
+  {
+    "pk": 71,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kacang Matahari Polos",
+      "kategori": "Makanan/Minuman",
+      "harga": 37500,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Kacang matahari merupakan kacang produk lokal asli dari Bali.",
+      "gambar": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/10/31/61350b31-0c0d-4b65-8512-b5920d69dad0.jpg"
+    }
+  },
+  {
+    "pk": 72,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kacang Matahari Bawang Putih",
+      "kategori": "Makanan/Minuman",
+      "harga": 40000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Kacang matahari merupakan kacang produk lokal asli dari Bali.",
+      "gambar": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//89/MTA-1812392/matahari_kacang-kapri-matahari-bawang-putih-500-gr_full02.jpg"
+    }
+  },
+  {
+    "pk": 73,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Pantai Motif Bunga",
+      "kategori": "Pakaian",
+      "harga": 60000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Warna Orange, Biru, Hitam, Hijau, Merah",
+      "gambar": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2024/7/17/90c1d3ba-3762-4985-b654-dedb2e21ca55.png"
+    }
+  },
+  {
+    "pk": 74,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Pantai Motif Pohon Kelapa",
+      "kategori": "Pakaian",
+      "harga": 60000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Warna Orange, Biru, Hitam, Hijau, Merah",
+      "gambar": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2024/7/17/aa290e1c-97a3-4411-b2c3-5b05c6baf1be.png"
+    }
+  },
+  {
+    "pk": 75,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Pantai Motif Mandala",
+      "kategori": "Pakaian",
+      "harga": 37000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Warna Orange, Biru, Hitam, Hijau, Merah",
+      "gambar": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2024/7/17/0802f715-6ca6-4848-9ac2-f8f1f6ba4a2d.png"
+    }
+  },
+  {
+    "pk": 76,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Pantai Motif Topeng",
+      "kategori": "Pakaian",
+      "harga": 37000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Warna Orange, Biru, Hitam, Hijau, Merah",
+      "gambar": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2024/7/17/e5459c5f-612a-4926-99b3-eb82907f61f4.png"
+    }
+  },
+  {
+    "pk": 77,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Pantai Motif Penyu",
+      "kategori": "Pakaian",
+      "harga": 60000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Warna Orange, Biru, Hitam, Hijau, Merah",
+      "gambar": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2024/7/17/2eb5bf56-0e3f-4e5b-a482-13b758489d4d.png"
+    }
+  },
+  {
+    "pk": 78,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Pantai Motif Matahari Merah",
+      "kategori": "Pakaian",
+      "harga": 60000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Warna Orange, Biru, Hitam, Hijau, Merah",
+      "gambar": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2024/7/17/262b7840-c03b-4193-acc8-7e16c26b61a7.png"
+    }
+  },
+  {
+    "pk": 79,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kain Pantai Motif Kerang",
+      "kategori": "Pakaian",
+      "harga": 60000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Warna Orange, Biru, Hitam, Hijau, Merah",
+      "gambar": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2024/7/17/e749b741-6c14-4242-a55e-f323968b79ac.png"
+    }
+  },
+  {
+    "pk": 80,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kue Kacang Kelapa Bali Original",
+      "kategori": "Makanan/Minuman",
+      "harga": 50000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Kue Kacang Kelapa Bali Original, kue tradisional Bali dengan rasa kacang yang gurih dan renyah.",
+      "gambar": "https://down-id.img.susercontent.com/file/sg-11134201-7rd70-lv4kyvxzsok04f"
+    }
+  },
+  {
+    "pk": 81,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kue Kacang Kelapa Bali Kelapa",
+      "kategori": "Makanan/Minuman",
+      "harga": 50000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Kue Kacang Kelapa Bali Kelapa, kue kacang khas Bali dengan tambahan kelapa yang lezat.",
+      "gambar": "https://down-id.img.susercontent.com/file/sg-11134201-7rd3l-lv4kyvlsajgr5c"
+    }
+  },
+  {
+    "pk": 82,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kue Kacang Kelapa Bali Campur",
+      "kategori": "Makanan/Minuman",
+      "harga": 50000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Kue Kacang Kelapa Bali Campur, kombinasi rasa kacang dan kelapa dalam satu kue khas Bali yang unik.",
+      "gambar": "https://down-id.img.susercontent.com/file/sg-11134201-7rd3v-lv4kyxchqrv569"
+    }
+  },
+  {
+    "pk": 83,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bubuk Banyuatis Mix Bag Arabica Robusta",
+      "kategori": "Makanan/Minuman",
+      "harga": 65000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Kopi ini diproduksi oleh pabrik Kopi Banyuatis yang berlokasi di Singaraja Bali, jenis kopi yang digunakan berjenis Kopi Robusta dengan proses penyangraian sedang. Hal ini terlihat pada warna bubuk kopi yang terlihat masih hitam kecoklatan, cara menyeduhnya sama seperti cara menyeduh kopi yang umum. 200 Gram",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCO7jShHh8eKaar6DxRIrHMB6QPXzHfTG72Q&s"
+    }
+  },
+  {
+    "pk": 84,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bubuk Banyuatis Premium 100gr",
+      "kategori": "Makanan/Minuman",
+      "harga": 15000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Kopi ini diproduksi oleh pabrik Kopi Banyuatis yang berlokasi di Singaraja Bali, jenis kopi yang digunakan berjenis Kopi Robusta dengan proses penyangraian sedang. Hal ini terlihat pada warna bubuk kopi yang terlihat masih hitam kecoklatan, cara menyeduhnya sama seperti cara menyeduh kopi yang umum. 100 Gram",
+      "gambar": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/96/MTA-166169020/no_brands_kopi_bubuk_banyuatis_premium_arabica_powder_foil_100gr_full03_ekzclszm.jpg"
+    }
+  },
+  {
+    "pk": 85,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kopi Bubuk Banyuatis Premium 200gr",
+      "kategori": "Makanan/Minuman",
+      "harga": 30000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Kopi ini diproduksi oleh pabrik Kopi Banyuatis yang berlokasi di Singaraja Bali, jenis kopi yang digunakan berjenis Kopi Robusta dengan proses penyangraian sedang. Hal ini terlihat pada warna bubuk kopi yang terlihat masih hitam kecoklatan, cara menyeduhnya sama seperti cara menyeduh kopi yang umum.",
+      "gambar": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/103/MTA-166169640/no_brands_kopi_bubuk_bali_banyuatis_premium_robusta_powder_foil_200gr_full16_f8jafp93.jpg"
+    }
+  },
+  {
+    "pk": 86,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Lapis Durian Monthong Khas Bali",
+      "kategori": "Makanan/Minuman",
+      "harga": 110000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Lapis Durian Monthong Khas Bali, kue lapis lembut dengan cita rasa durian Monthong yang legit dan khas.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2022/9/16/76ff039f-adfa-4e99-a588-67eb21196e30.jpg"
+    }
+  },
+  {
+    "pk": 87,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "YAVA wild harvested cashews - Cacao",
+      "kategori": "Makanan/Minuman",
+      "harga": 41900,
+      "toko": "YAVA Official Store",
+      "alamat": "PT EAST INDO FAIR TRADING, Jl. Padang Galak No.20 A, Kesiman Petilan \u2013 Denpasar, 80237, Indonesia",
+      "deskripsi": "Dipetik dari pohon mede yang tumbuh di tanah yang kaya akan mineral di antara gunung berapi terbesar di Bali dan pantai berpasir hitam, kemudian dikupas dengan hati-hati oleh tim kami sendiri, Kacang Mede Mentah YAVA memberikan rasa kacang mede yang unik dan lembut, semuanya untuk membuat anda tersenyum lebar!, 75 Gram",
+      "gambar": "https://yavabali.com/cfind/source/thumb/images/product/cashews/35g/cover_w446_h446_35g-cashews---cacao-frontside.png"
+    }
+  },
+  {
+    "pk": 88,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "YAVA wild harvested cashews - Chili Lime",
+      "kategori": "Makanan/Minuman",
+      "harga": 41900,
+      "toko": "YAVA Official Store",
+      "alamat": "PT EAST INDO FAIR TRADING, Jl. Padang Galak No.20 A, Kesiman Petilan \u2013 Denpasar, 80237, Indonesia",
+      "deskripsi": "Dipetik dari pohon mede yang tumbuh di tanah yang kaya akan mineral di antara gunung berapi terbesar di Bali dan pantai berpasir hitam, kemudian dikupas dengan hati-hati oleh tim kami sendiri, Kacang Mede Mentah YAVA memberikan rasa kacang mede yang unik dan lembut, semuanya untuk membuat anda tersenyum lebar!, 75 Gram",
+      "gambar": "https://yavabali.com/cfind/source/thumb/images/product/cashews/35g/cover_w446_h446_35g-cashews---chililime-frontside.png"
+    }
+  },
+  {
+    "pk": 89,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "YAVA wild harvested cashews - Garlic Paper",
+      "kategori": "Makanan/Minuman",
+      "harga": 41900,
+      "toko": "YAVA Official Store",
+      "alamat": "PT EAST INDO FAIR TRADING, Jl. Padang Galak No.20 A, Kesiman Petilan \u2013 Denpasar, 80237, Indonesia",
+      "deskripsi": "Dipetik dari pohon mede yang tumbuh di tanah yang kaya akan mineral di antara gunung berapi terbesar di Bali dan pantai berpasir hitam, kemudian dikupas dengan hati-hati oleh tim kami sendiri, Kacang Mede Mentah YAVA memberikan rasa kacang mede yang unik dan lembut, semuanya untuk membuat anda tersenyum lebar!, 75 Gram",
+      "gambar": "https://yavabali.com/cfind/source/thumb/images/product/cashews/35g/cover_w446_h446_35g-cashews---garlicpepper-frontside.png"
+    }
+  },
+  {
+    "pk": 90,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "YAVA wild harvested cashews - Roasted",
+      "kategori": "Makanan/Minuman",
+      "harga": 41900,
+      "toko": "YAVA Official Store",
+      "alamat": "PT EAST INDO FAIR TRADING, Jl. Padang Galak No.20 A, Kesiman Petilan \u2013 Denpasar, 80237, Indonesia",
+      "deskripsi": "Dipetik dari pohon mede yang tumbuh di tanah yang kaya akan mineral di antara gunung berapi terbesar di Bali dan pantai berpasir hitam, kemudian dikupas dengan hati-hati oleh tim kami sendiri, Kacang Mede Mentah YAVA memberikan rasa kacang mede yang unik dan lembut, semuanya untuk membuat anda tersenyum lebar!, 75 Gram",
+      "gambar": "https://yavabali.com/cfind/source/thumb/images/product/cashews/35g/cover_w446_h446_35g-cashews---roasted-frontside.png"
+    }
+  },
+  {
+    "pk": 91,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "YAVA wild harvested cashews - Sea Salt",
+      "kategori": "Makanan/Minuman",
+      "harga": 41900,
+      "toko": "YAVA Official Store",
+      "alamat": "PT EAST INDO FAIR TRADING, Jl. Padang Galak No.20 A, Kesiman Petilan \u2013 Denpasar, 80237, Indonesia",
+      "deskripsi": "Dipetik dari pohon mede yang tumbuh di tanah yang kaya akan mineral di antara gunung berapi terbesar di Bali dan pantai berpasir hitam, kemudian dikupas dengan hati-hati oleh tim kami sendiri, Kacang Mede Mentah YAVA memberikan rasa kacang mede yang unik dan lembut, semuanya untuk membuat anda tersenyum lebar!, 75 Gram",
+      "gambar": "https://yavabali.com/cfind/source/thumb/images/product/cashews/35g/cover_w446_h446_35g-cashews---seasalt-frontside.png"
+    }
+  },
+  {
+    "pk": 92,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "YAVA wild harvested cashews - Sweet & Spicy",
+      "kategori": "Makanan/Minuman",
+      "harga": 41900,
+      "toko": "YAVA Official Store",
+      "alamat": "PT EAST INDO FAIR TRADING, Jl. Padang Galak No.20 A, Kesiman Petilan \u2013 Denpasar, 80237, Indonesia",
+      "deskripsi": "Dipetik dari pohon mede yang tumbuh di tanah yang kaya akan mineral di antara gunung berapi terbesar di Bali dan pantai berpasir hitam, kemudian dikupas dengan hati-hati oleh tim kami sendiri, Kacang Mede Mentah YAVA memberikan rasa kacang mede yang unik dan lembut, semuanya untuk membuat anda tersenyum lebar!, 75 Gram",
+      "gambar": "https://yavabali.com/cfind/source/thumb/images/product/cashews/35g/cover_w446_h446_35g-cashews---sweetspicy-frontside.png"
+    }
+  },
+  {
+    "pk": 93,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "YAVA wild harvested cashews - Raw",
+      "kategori": "Makanan/Minuman",
+      "harga": 41900,
+      "toko": "YAVA Official Store",
+      "alamat": "PT EAST INDO FAIR TRADING, Jl. Padang Galak No.20 A, Kesiman Petilan \u2013 Denpasar, 80237, Indonesia",
+      "deskripsi": "Dipetik dari pohon mede yang tumbuh di tanah yang kaya akan mineral di antara gunung berapi terbesar di Bali dan pantai berpasir hitam, kemudian dikupas dengan hati-hati oleh tim kami sendiri, Kacang Mede Mentah YAVA memberikan rasa kacang mede yang unik dan lembut, semuanya untuk membuat anda tersenyum lebar!, 75 Gram",
+      "gambar": "https://yavabali.com/cfind/source/thumb/images/product/cashews/cover_w446_h446_raw-front.png"
+    }
+  },
+  {
+    "pk": 94,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "YAVA wild harvested cashews - Skin On",
+      "kategori": "Makanan/Minuman",
+      "harga": 41900,
+      "toko": "YAVA Official Store",
+      "alamat": "PT EAST INDO FAIR TRADING, Jl. Padang Galak No.20 A, Kesiman Petilan \u2013 Denpasar, 80237, Indonesia",
+      "deskripsi": "Dipetik dari pohon mede yang tumbuh di tanah yang kaya akan mineral di antara gunung berapi terbesar di Bali dan pantai berpasir hitam, kemudian dikupas dengan hati-hati oleh tim kami sendiri, Kacang Mede Mentah YAVA memberikan rasa kacang mede yang unik dan lembut, semuanya untuk membuat anda tersenyum lebar!, 75 Gram",
+      "gambar": "https://yavabali.com/cfind/source/thumb/images/product/cashews/cover_w446_h446_skin-on-front.png"
+    }
+  },
+  {
+    "pk": 95,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Lilin Aromaterapi ",
+      "kategori": "Lain - Lain",
+      "harga": 55000,
+      "toko": "Maharani Craft",
+      "alamat": "JL. Tangkuban Perahu, Gg. Merta Sedana No. 7 Br. Pengubengan Kangin,, Kerobokan, Denpasar Barat, Badung Regency, Bali 80117",
+      "deskripsi": "Lilin aromaterapi dengan wangi menenangkan untuk menciptakan suasana relaksasi di rumah.",
+      "gambar": "https://maharanihandicraft.com/wp-content/uploads/2022/11/candle-holder-7.jpg"
+    }
+  },
+  {
+    "pk": 96,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Topeng Barong bali",
+      "kategori": "Lain - Lain",
+      "harga": 110000,
+      "toko": "Maharani Craft",
+      "alamat": "JL. Tangkuban Perahu, Gg. Merta Sedana No. 7 Br. Pengubengan Kangin,, Kerobokan, Denpasar Barat, Badung Regency, Bali 80117",
+      "deskripsi": "Topeng Barong Bali yang autentik, melambangkan kekuatan pelindung dalam budaya Bali.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7CP-ztDCYSY1WujEhPj1jUMPia73AXr3bhw&s"
+    }
+  },
+  {
+    "pk": 97,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Gantungan kerang aesthetic",
+      "kategori": "Makanan/Minuman",
+      "harga": 25000,
+      "toko": "Maharani Craft",
+      "alamat": "JL. Tangkuban Perahu, Gg. Merta Sedana No. 7 Br. Pengubengan Kangin,, Kerobokan, Denpasar Barat, Badung Regency, Bali 80117",
+      "deskripsi": "Gantungan kerang aesthetic, memberikan sentuhan alami dan elegan pada dekorasi rumah.",
+      "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2022/1/10/2e2cb03b-a9db-458f-b38f-6de103b33358.jpg"
+    }
+  },
+  {
+    "pk": 98,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Dreamcather",
+      "kategori": "Kerajinan Tangan",
+      "harga": 20000,
+      "toko": "Maharani Craft",
+      "alamat": "JL. Tangkuban Perahu, Gg. Merta Sedana No. 7 Br. Pengubengan Kangin,, Kerobokan, Denpasar Barat, Badung Regency, Bali 80117",
+      "deskripsi": "Dreamcatcher berdesain unik untuk menambah suasana boho pada ruangan dan membawa mimpi indah.",
+      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRexoVWwuh3Gl-kjCh3_NZSzVJpUE8KC1Bo0A&s"
+    }
+  },
+  {
+    "pk": 99,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Tas rajut Bali",
+      "kategori": "Pakaian",
+      "harga": 120000,
+      "toko": "CENTRAMATA",
+      "alamat": "Gg. J No.11, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80225",
+      "deskripsi": "Tas rajut Bali handmade yang stylish, cocok untuk tampilan kasual dengan nuansa tradisional.",
+      "gambar": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/2/25/3b24b4cf-0596-4073-8b79-fdf547e986c1.png"
+    }
+  },
+  {
+    "pk": 100,
+    "model": "catalog.Product",
+    "fields": {
+      "nama": "Kerupuk Babi Samcan",
+      "kategori": "Makanan/Minuman",
+      "harga": 89000,
+      "toko": "Rumah Semut Oleh Oleh Khas Bali",
+      "alamat": "Jl. Tukad Languan No.17, Dauh Puri Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "deskripsi": "Teksturnya renyah, dengan potongan kerupuk serta bumbu khas kerupuk lariss menghasilkan kerupuk babi yang enak",
+      "gambar": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2024/4/28/8cf3170a-70dc-4483-b6af-60dd305a4622.png"
+    }
+  }
+]
