@@ -65,7 +65,12 @@
         reviews.forEach((review) => {
             totalRatings += review.ratings;
             totalElement++;
-            htmlString += `{% include 'user-review.html' with review=review %}`;
+            
+            if ("{{ user.username }}" !== review.username) {
+                htmlString += `{% include 'user-review.html' with review=review %}`;
+            } else {
+                htmlString += `{% include 'user-review-2.html' with review=review %}`;
+            }
         });
         let tempatRating = document.getElementById("tempat-rating");
         if (totalElement !== 0) {
@@ -73,7 +78,6 @@
         } else {
             tempatRating.textContent = "Belum ada rating";
         }
-
         document.getElementById("user_reviews").innerHTML = htmlString;
     }
     refreshReviews();
