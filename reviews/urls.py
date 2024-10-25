@@ -4,5 +4,5 @@ from .views import *
 app_name = 'reviews'
 
 urlpatterns = [
-    path('', show_review, name='review'),
+    path('<int:id>', show_review, name='review'),
 ]
