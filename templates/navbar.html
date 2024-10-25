@@ -1,4 +1,5 @@
 {% load static %}
+{% if user.is_authenticated %}
 <div class="navbar bg-white text-black font-bold">
   <div class="navbar-start p-0 m-0">
     <div class="dropdown">
@@ -60,3 +61,4 @@
     </a>
   </div>
 </div>
+{% endif %}
