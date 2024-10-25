@@ -18,7 +18,7 @@ OlehBali adalah solusi bagi wisatawan yang ingin membawa pulang oleh-oleh khas B
 
 Modul untuk mengautentikasi pengguna. Modul ini menangani sistem _login_ bagi pengguna yang memiliki akun, dan _sign up_ bagi pengguna yang belum memiliki akun. Apabila pengguna telah berhasil diautentikasi, pengguna akan diarahkan ke laman utama dari _website_.
 
-Dikerjakan oleh: Nur Alya Khairina
+Dikerjakan oleh: Nur Alya Khairina dan Muhammad Hibrizi Farghana
 
 ### 1. Profil Pengguna
 

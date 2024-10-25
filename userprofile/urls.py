@@ -5,7 +5,7 @@ app_name = 'userprofile'
 
 urlpatterns = [
     path('dashboard/<int:id>/', dashboard, name='dashboard'),
-    path('edit/', edit_profile, name='edit_profile'),
-    path('delete/', delete_account, name='delete_account'),
+    path('update-profile/<int:id>/', update_profile, name='update_profile'),
+    path('delete-account/', delete_account, name='delete_account'),
     path('wishlist/', wishlist_dashboard, name='wishlist_dashboard'),
 ]
