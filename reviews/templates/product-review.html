@@ -7,5 +7,42 @@
     {% include 'product-description.html' with gambar=product.gambar nama=product.nama deskripsi=product.deskripsi %}  
 </div>
 
+<div id="user_reviews"></div>
+{% include 'reviews-modal.html' %}
 
+<script>
+    async function getReviews(){
+        return fetch("{% url 'reviews:review_json' product.pk %}").then((res) => res.json())
+    }
+
+    function addReview() {
+        fetch("{% url 'reviews:add_review' product.pk %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#reviewForm')),
+        })
+        .then(response => refreshReviews())
+        document.getElementById("reviewForm").reset();
+        document.getElementById('review_modal').close()
+        return false;
+    }
+
+    document.getElementById("reviewForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        addReview(); 
+    });
+
+    async function refreshReviews() {
+        document.getElementById("user_reviews").innerHTML = "";
+        const reviews = await getReviews();
+        let htmlString = "";
+        let classNameString = "";
+
+        reviews.forEach((review) => {
+            console.log(review)
+            htmlString += `{% include 'user-review.html' with review=review %}`;
+        });
+        document.getElementById("user_reviews").innerHTML = htmlString;
+    }
+    refreshReviews();
+</script>
 {% endblock content %}
