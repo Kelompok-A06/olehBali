@@ -13,6 +13,9 @@
     <script src="https://cdn.tailwindcss.com"></script> 
 </head>
 <body class="font-[lato]">
-    {% block content %} {% endblock content %}
+    {% include "navbar.html" %}
+    {% block content %}
+    {% endblock content %}
+    {% include "footer.html" %}
 </body>
 </html>
