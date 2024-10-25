@@ -1,0 +1,15 @@
+<div id="review-container" class="chat chat-start">
+    <div class="chat-header">
+        <span class="text-[#03A4C1] text-xl font-semibold">${review.username}</span>
+    </div>
+    <div id="comments-${review.id}" class="chat-bubble bg-[#C6E0D1] text-2xl text-black">
+        <span>${review.comments}</span>
+        <div class="flex flex-row-reverse mt-2">
+            <button class="btn btn-warning btn-sm text-white rounded-r-full px-2 py-1">Edit</button>
+            <button class="btn btn-error btn-sm text-white rounded-l-full px-2 py-1">Delete</button>
+        </div>
+    </div>
+    <div class="chat-footer text-[#FE9642] text-lg font-semibold mt-1">
+        Rating: ${review.ratings}/5
+    </div>
+</div>
