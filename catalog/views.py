@@ -16,5 +16,5 @@ def get_products(request):
     return HttpResponse(serializers.serialize("json", products), content_type="application/json")
 
 def get_products_by_id(request, id):
-    product = Product.objects.get(pk=id)
+    product = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", product), content_type="application/json")
