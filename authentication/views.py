@@ -21,7 +21,9 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 def show_main(request):
     context = {
-        'user_name': request.user.username
+        'user_name': request.user.username,
+    
+        'user' : request.user,
     }
     return render(request, "home.html", context)
 
