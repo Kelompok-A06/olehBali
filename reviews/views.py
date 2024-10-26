@@ -1,12 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from catalog.models import Product
 from .models import Reviews
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils.html import strip_tags
 from authentication.models import User
 from django.core import serializers
+from django.urls import reverse
 
 # Create your views here.
 def show_review(request, id):
@@ -58,3 +59,11 @@ def add_review(request, id):
     return JsonResponse({
         'status': 'CREATED',
     }, status=201)
+
+
+def delete_review(request, id):
+    review = Reviews.objects.get(pk=id)
+    product = review.product
+    review.delete()
+    return redirect(reverse('reviews:review', kwargs={'id': product.id}))
+

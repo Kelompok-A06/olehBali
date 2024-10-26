@@ -69,7 +69,10 @@
             if ("{{ user.username }}" !== review.username) {
                 htmlString += `{% include 'user-review.html' with review=review %}`;
             } else {
-                htmlString += `{% include 'user-review-2.html' with review=review %}`;
+                htmlString += `
+                {% include 'user-review-2.html' with review=review %}
+                {% include 'delete-modal.html' with review=review %}
+                `;
             }
         });
         let tempatRating = document.getElementById("tempat-rating");

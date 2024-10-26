@@ -6,7 +6,7 @@
         <span>${review.comments}</span>
         <div class="flex flex-row-reverse mt-2">
             <button class="btn btn-warning btn-sm text-white rounded-r-full px-2 py-1">Edit</button>
-            <button class="btn btn-error btn-sm text-white rounded-l-full px-2 py-1">Delete</button>
+            <button onClick="delete_modal_${review.id}.showModal()" class="btn btn-error btn-sm text-white rounded-l-full px-2 py-1">Delete</button>
         </div>
     </div>
     <div class="chat-footer text-[#FE9642] text-lg font-semibold mt-1">
