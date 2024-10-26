@@ -10,7 +10,7 @@
             <img src="static/images/purahome.png" class="rounded-[40px] inline-block mx-5 max-w-[90%]" />
             <div class="absolute top-0 left-0 h-full w-full flex items-center justify-end pr-4 md:pr-20">
                 <div class="text-white text-right space-y-4 max-w-lg pr-4 md:pr-16">
-                    <h1 class="text-4xl font-bold">Halo, {{ user_name }}!</h1>
+                    <h1 class="text-4xl font-bold">Halo, {{ user.username }}!</h1>
                     <h2 class="text-3xl font-bold hidden md:block">Find Your Souvenirs</h2>
                     <p class="text-lg hidden md:block">We give you Bali's best souvenirs in Denpasar.<br>Discover a wide range of unique and exclusive products. Go, shopping!</p>
                     <span class="px-6 py-2 bg-transparent text-white font-normal rounded-full inline-block border-2 border-white">OlehBali.</span>
@@ -75,6 +75,12 @@
             <p class="mt-4 max-w-2xl mx-auto text-gray-600">
                 Hear from our satisfied customers! Their testimonials reflect the quality and ease of finding the perfect Bali souvenirs, showcasing the positive experiences they’ve had with our offerings.
             </p> <br>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 break-words">
+            {% for review in reviews %}
+                {% include "review-card.html" with review=review %}    
+            {% endfor %}
+             
         </div>
     </div>
 {% endblock content %}
