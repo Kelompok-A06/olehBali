@@ -75,6 +75,15 @@
         addReview(); 
     });
 
+    function deleteReview(reviewId) {
+        console.log(reviewId)
+        fetch(`/reviews/delete/${reviewId}`, {
+            method: 'DELETE',
+        })
+        .then(response => refreshReviews())
+        .catch(error => console.error('Error:', error));
+    }
+
     async function refreshReviews() {
         document.getElementById("user_reviews").innerHTML = "";
         const reviews = await getReviews();

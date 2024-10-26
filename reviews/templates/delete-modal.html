@@ -5,12 +5,13 @@
             Apakah Anda yakin untuk menghapus review ini? Tindakan ini tidak dapat dibatalkan.
         </p>
         <div class="modal-action">
-            <a 
-                href="delete/${review.id}" 
+            <button 
+                type="button"
+                onclick="deleteReview(${review.id})" 
                 class="btn bg-[#FE9642] hover:bg-[#03A4C1] text-white" 
             >
                 Delete
-            </a>
+            </button>
             <button 
                 type="button" 
                 class="btn bg-gray-300 hover:bg-gray-400 text-black" 

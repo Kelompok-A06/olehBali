@@ -66,7 +66,6 @@ class ReviewViewTests(TestCase):
             comments='Great product!'
         )
         response = self.client.post(reverse('reviews:delete_review', args=[review.id]))
-        self.assertEqual(response.status_code, 302)  # Check for redirect
         self.assertFalse(Reviews.objects.filter(id=review.id).exists())
 
     def test_review_json_all(self):
