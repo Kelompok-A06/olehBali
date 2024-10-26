@@ -19,6 +19,10 @@ def show_review(request, id):
     }
     return render(request, "product-review.html", context)
 
+def review_json_all(request):
+    reviews = Reviews.objects.all()
+    return HttpResponse(serializers.serialize("json", reviews), content_type="application/json")
+
 def review_json(request, id):
     product = Product.objects.get(pk=id)
     reviews = Reviews.objects.filter(product=product)
@@ -54,7 +58,7 @@ def add_review(request, id):
                 'name': 'Comments cannot be blank.',
             }
         }, status=400)
-    print(review_id)
+
     if not review_id:
         new_review = Reviews(
             ratings=ratings, comments=comments,
