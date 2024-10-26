@@ -34,8 +34,33 @@
         {% endfor %}
     </div>
     {% else %}
-    <p class="text-gray-700 mt-10">Your wishlist is currently empty.</p>
+    <div class="flex justify-center items-center w-full h-[50vh]">
+        <p class="text-gray-500 text-xl text-bold">Your wishlist is currently empty.</p>
+    </div>
     {% endif %}
 </div>
 
+<script>
+    function removeFromWishlist(productId) {
+        fetch(`/wishlist/json/delete_wishlist/${productId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                const itemElement = document.getElementById(`wishlist-item-${productId}`);
+                if (itemElement) {
+                    itemElement.remove();
+                }
+            } else {
+                console.error('Error:', data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
 {% endblock content %}
