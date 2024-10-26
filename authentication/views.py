@@ -20,7 +20,9 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login')
 def show_main(request):
-    context = {}
+    context = {
+        'user_name': request.user.username
+    }
     return render(request, "home.html", context)
 
 def login_register(request):

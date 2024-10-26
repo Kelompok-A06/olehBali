@@ -1,0 +1,11 @@
+from django.urls import path
+from .views import *
+
+app_name = 'reviews'
+
+urlpatterns = [
+    path('<int:id>', show_review, name='review'),
+    path('add-review/<int:id>', add_review, name='add_review'),
+    path('api/<int:id>', review_json, name='review_json'),
+
+]
