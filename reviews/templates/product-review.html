@@ -11,8 +11,27 @@
 {% include 'reviews-modal.html' %}
 
 <script>
+    async function openEditModal(buttonId) {
+        let review = await getChosenReviews(buttonId)
+        review = review[0]
+        document.getElementById("ratings").value = review.fields.ratings;
+        document.getElementById("comments").value = review.fields.comments;
+        document.getElementById("review_id").value = buttonId;
+        document.getElementById("review_modal").showModal();
+    }
+
+    async function closeReviewModal() {
+        document.getElementById("reviewForm").reset();
+        document.getElementById('review_modal').close()
+    }
+
     async function getReviews(){
         return fetch("{% url 'reviews:review_json' product.pk %}").then((res) => res.json())
+    }
+
+    async function getChosenReviews(reviewId){
+        const url = `/reviews/api/get/${reviewId}`;
+        return fetch(url).then((res) => res.json());
     }
 
     function addReview() {
@@ -34,8 +53,9 @@
         })
         .then(({status, body}) => {
             removeErrorMessages();
-            if (status === 201) {
+            if (status === 201 || status === 200) {
                 refreshReviews();
+                document.getElementById("review_id").value = "";
                 document.getElementById("reviewForm").reset();
                 document.getElementById('review_modal').close()
                 return false;

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from catalog.models import Product
 from .models import Reviews
-from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils.html import strip_tags
@@ -34,11 +34,16 @@ def review_json(request, id):
     
     return JsonResponse(review_data, safe=False) 
 
+def chosen_review_json(request, id):
+    review = Reviews.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", review), content_type="application/json")
+
 @csrf_exempt
 @require_POST
 def add_review(request, id):
     ratings = request.POST.get("ratings")
     comments = strip_tags(request.POST.get("comments"))
+    review_id = request.POST.get("review_id")
     product = Product.objects.get(pk=id)
     user = request.user;
 
@@ -49,16 +54,21 @@ def add_review(request, id):
                 'name': 'Comments cannot be blank.',
             }
         }, status=400)
+    print(review_id)
+    if not review_id:
+        new_review = Reviews(
+            ratings=ratings, comments=comments,
+            user=user,product=product,
+        )
+        new_review.save()
 
-    new_review = Reviews(
-        ratings=ratings, comments=comments,
-        user=user,product=product,
-    )
-    new_review.save()
-
-    return JsonResponse({
-        'status': 'CREATED',
-    }, status=201)
+        return JsonResponse({'status': 'CREATED',}, status=201)
+    else:
+        review = Reviews.objects.get(pk=review_id, user=user, product=product)
+        review.ratings = ratings
+        review.comments = comments
+        review.save()
+        return JsonResponse({'status': 'UPDATED'}, status=200)
 
 
 def delete_review(request, id):
