@@ -29,8 +29,9 @@ def show_wishlist_json(request):
         {
             'id': product.id,
             'nama': product.nama,
-            'gambar': product.gambar if product.gambar else '',
+            'toko': product.toko,
             'harga': product.harga,
+            'gambar': product.gambar if product.gambar else '',
         }
         for product in Product.objects.filter(wishlist__user=request.user)
     ]
