@@ -58,7 +58,7 @@ def add_review(request, id):
                 'name': 'Comments cannot be blank.',
             }
         }, status=400)
-    print(review_id)
+
     if not review_id:
         new_review = Reviews(
             ratings=ratings, comments=comments,
