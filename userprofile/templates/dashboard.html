@@ -183,9 +183,9 @@
               <span class="text-2xl">&times;</span>
             </button>
           </div>
-          <p id="userId" style="display: none;">{{ profile.id }}</p>
+          <input type="hidden" id="userId" name="user_id" value="{{ profile.id }}">
           
-          <form id="userProfileForm" enctype="multipart/form-data">
+          <form id="editProfileForm" enctype="multipart/form-data">
 
             {% csrf_token %}
             
@@ -285,7 +285,7 @@ document.getElementById('avatarInput').addEventListener('change', function(e) {
 document.getElementById('editProfileForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    const userId = document.getElementById('userId');
+    const userId = document.getElementById('userId').value;
     const formData = new FormData(this);
     
     try {
@@ -294,6 +294,7 @@ document.getElementById('editProfileForm').addEventListener('submit', async func
             body: formData,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
             },
             credentials: 'same-origin'
         });
@@ -328,6 +329,7 @@ document.getElementById('editProfileForm').addEventListener('submit', async func
         }
     } catch (error) {
         console.error('Error:', error);
+        console.log(userId);
         alert('An error occurred while updating profile');
     }
 });
