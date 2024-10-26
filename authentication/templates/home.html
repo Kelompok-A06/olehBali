@@ -74,13 +74,12 @@
             <h2 class="text-5xl text-black font-bold mt-2">What People Say</h2>
             <p class="mt-4 max-w-2xl mx-auto text-gray-600">
                 Hear from our satisfied customers! Their testimonials reflect the quality and ease of finding the perfect Bali souvenirs, showcasing the positive experiences they’ve had with our offerings.
-            </p> <br>
+            </p> 
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 break-words">
             {% for review in reviews %}
                 {% include "review-card.html" with review=review %}    
             {% endfor %}
-             
-        </div>
+        </div><br><br>
     </div>
 {% endblock content %}

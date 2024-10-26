@@ -9,6 +9,7 @@ from authentication.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
+from wishlist.models import Wishlist
 import os
 import json
 from django.http import JsonResponse
@@ -119,11 +120,3 @@ def delete_account(request):
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON data.'}, status=400)
     else:
         return JsonResponse({'status': 'method_not_allowed'}, status=405)
-
-@login_required
-def wishlist_dashboard(request):
-    # Placeholder untuk wishlist, nanti disesuaikan dengan model wishlist
-    context = {
-        "user": request.user
-    }
-    return render(request, 'wishlist.html', context)

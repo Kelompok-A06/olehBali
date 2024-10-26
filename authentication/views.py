@@ -26,6 +26,7 @@ def show_main(request):
 
     reviews = Reviews.objects.all()
     context = {
+        'user_name': request.user.username,
         'profile' : profile[0],
         'user' : request.user,
         'reviews' : reviews
