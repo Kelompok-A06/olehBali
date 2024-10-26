@@ -19,6 +19,10 @@ def show_review(request, id):
     }
     return render(request, "product-review.html", context)
 
+def review_json_all(request):
+    reviews = Reviews.objects.all()
+    return HttpResponse(serializers.serialize("json", reviews), content_type="application/json")
+
 def review_json(request, id):
     product = Product.objects.get(pk=id)
     reviews = Reviews.objects.filter(product=product)

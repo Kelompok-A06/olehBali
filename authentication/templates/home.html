@@ -76,5 +76,11 @@
                 Hear from our satisfied customers! Their testimonials reflect the quality and ease of finding the perfect Bali souvenirs, showcasing the positive experiences they’ve had with our offerings.
             </p> <br>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 break-words">
+            {% for review in reviews %}
+                {% include "review-card.html" with review=review %}    
+            {% endfor %}
+             
+        </div>
     </div>
 {% endblock content %}
