@@ -1,0 +1,32 @@
+{% load static %}
+
+<a href="/reviews/{{ review.product.pk }}" class="block">
+  <div class="card w-full bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+      <p class="text-sm text-[#03A4C1] font-medium mb-2">
+          Reviewing: {{ review.product.nama }}
+      </p>
+
+      <div class="flex items-center space-x-4">
+        <div class="avatar">
+          <div class="w-12 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
+              <img                
+              src="{% static 'avatars/default_avatar.png' %}" 
+              alt="Profile Avatar" />
+          </div>
+        </div>
+        <div>
+          <h2 class="card-title text-lg text-orange-500 font-semibold">{{ review.user.username }}</h2>
+        </div>
+      </div>
+
+      <p class="text-gray-600 mt-2">
+        {{ review.comments }}
+      </p>
+
+      <div class="flex flex-row-reverse">
+          <p class="text-gray-600 mt-2">
+              {{ review.ratings }} / 5
+          </p>
+      </div>
+  </div>
+</a>
