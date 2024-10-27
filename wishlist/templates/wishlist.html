@@ -31,14 +31,16 @@
                 {% csrf_token %}
                 <button type="submit" class="rounded-[20px] bg-[#F39C12] text-white px-4 py-2 hover:bg-[#03A4C1]">Delete</button>
             </form>
-
-            {% if item.product_status == 1 %}
-            <span class="status-badge bg-green-500 text-white px-3 py-1 rounded-full">Should Buy</span>
-            {% elif item.product_status == 2 %}
-            <span class="status-badge bg-yellow-500 text-white px-3 py-1 rounded-full">Interested</span>
-            {% else %}
-            <span class="status-badge bg-gray-500 text-white px-3 py-1 rounded-full">Maybe Later</span>
-            {% endif %}
+            <form method="post" action="{% url 'wishlist:update_status' item.id %}" >
+                {% csrf_token %}
+                {% if item.product_status == 1 %}
+                <button type="submit" class="status-badge bg-green-500 text-white px-3 py-1 rounded-full">Should Buy</button>
+                {% elif item.product_status == 2 %}
+                <button type="submit" class="status-badge bg-yellow-500 text-white px-3 py-1 rounded-full">Interested</button>
+                {% else %}
+                <button type="submit" class="status-badge bg-gray-500 text-white px-3 py-1 rounded-full">Maybe Later</button>
+                {% endif %}
+            </form>
         
         </div>
         {% endfor %}
@@ -57,17 +59,6 @@
     <br>
 </div>
 
-<div id="status-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-    <div class="bg-white p-5 rounded-lg shadow-lg w-96">
-        <form id="status-form" method="post" action="">
-            {% csrf_token %}
-            <h2 class="text-xl font-semibold mb-4">Product Status</h2>
-            {{ form.product_status }}
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-            <button type="button" onclick="closeStatusModal()" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Cancel</button>
-        </form>
-    </div>
-</div>
 
 <script>
     function removeFromWishlist(productId) {

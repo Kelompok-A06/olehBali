@@ -12,11 +12,3 @@ class AddWishlistStatusForm(forms.Form):
         choices=PRODUCT_STATUS,
         widget=forms.RadioSelect
     )
-
-class AddWishlistStatusForm(forms.ModelForm):
-    class Meta:
-        model = Wishlist
-        fields = ['product_status']
-        widgets = {
-            'product_status': forms.RadioSelect(choices=Wishlist.PRODUCT_STATUS)
-        }
