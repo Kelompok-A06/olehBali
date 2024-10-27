@@ -135,7 +135,7 @@ else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static') # merujuk ke /static root project pada mode production
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
