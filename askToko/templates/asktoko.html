@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Question List -->
+<div id="question-list" class="grid grid-cols-1 gap-4">
+  <!-- Questions will load dynamically -->
+</div>
+
+<!-- Question Modal for Create/Edit -->
+<div id="questionModal" class="modal hidden">
+  <form id="questionForm">
+    <textarea id="questionText" placeholder="Write your question here..."></textarea>
+    <button type="submit">Save</button>
+  </form>
+  <button id="closeModal">Close</button>
+</div>
+
+<script>
+// Fetch all questions
+async function loadQuestions() {
+  const response = await fetch('/questions/read/');
+  const data = await response.json();
+  document.getElementById('question-list').innerHTML = data.questions.map(question => `
+    <div class="question-card" data-id="${question.pk}">
+      <p>${question.fields.question}</p>
+      <button onclick="editQuestion(${question.pk})">Edit</button>
+      <button onclick="deleteQuestion(${question.pk})">Delete</button>
+      <button onclick="createAnswer(${question.pk})">Answer</button>
+    </div>
+  `).join('');
+}
+
+// Create new question
+document.getElementById('questionForm').onsubmit = async (event) => {
+  event.preventDefault();
+  const questionText = document.getElementById('questionText').value;
+  await fetch('/questions/create/', {
+    method: 'POST',
+    body: new URLSearchParams({ question: questionText })
+  });
+  loadQuestions();
+};
+
+// Delete question
+async function deleteQuestion(id) {
+  await fetch(`/questions/${id}/delete/`, { method: 'POST' });
+  loadQuestions();
+}
+
+// Edit question (similar logic can be implemented)
+
+document.addEventListener('DOMContentLoaded', loadQuestions);
+</script>
+{% endblock %}
