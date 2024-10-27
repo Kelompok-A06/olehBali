@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block meta %}
+{% endblock meta %}
+{% block content %}
+
+<div class="flex flex-col justift-center items-center mt-14 mb-8">
+    {% include 'product-description.html' with product=product %}  
+</div>
+
+<div id="user_reviews"></div>
+{% include 'reviews-modal.html' %}
+
+<script>
+    async function openEditModal(buttonId) {
+        let review = await getChosenReviews(buttonId)
+        review = review[0]
+        document.getElementById("ratings").value = review.fields.ratings;
+        document.getElementById("comments").value = review.fields.comments;
+        document.getElementById("review_id").value = buttonId;
+        document.getElementById("review_modal").showModal();
+    }
+
+    async function closeReviewModal() {
+        document.getElementById("reviewForm").reset();
+        document.getElementById('review_modal').close()
+    }
+
+    async function getReviews(){
+        return fetch("{% url 'reviews:review_json' product.pk %}").then((res) => res.json())
+    }
+
+    async function getChosenReviews(reviewId){
+        const url = `/reviews/api/get/${reviewId}`;
+        return fetch(url).then((res) => res.json());
+    }
+
+    function addReview() {
+        function removeErrorMessages() {
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.remove();
+            });
+        }
+
+        fetch("{% url 'reviews:add_review' product.pk %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#reviewForm')),
+        })
+        .then(response => {
+            return response.json().then(data => ({
+                status: response.status,
+                body: data
+            }));
+        })
+        .then(({status, body}) => {
+            removeErrorMessages();
+            if (status === 201 || status === 200) {
+                refreshReviews();
+                document.getElementById("review_id").value = "";
+                document.getElementById("reviewForm").reset();
+                document.getElementById('review_modal').close()
+                return false;
+            } else if (status === 400) {
+                let commentField = document.getElementById("comments");
+                let errorMessage = document.createElement("p");
+                errorMessage.className = "text-red-500 text-sm mt-1 error-message";
+                errorMessage.textContent = body.errors.name;
+                console.log(body.errors.name)
+                commentField.parentNode.appendChild(errorMessage);
+            }
+        });
+    }
+
+    document.getElementById("reviewForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        addReview(); 
+    });
+
+    function deleteReview(reviewId) {
+        console.log(reviewId)
+        fetch(`/reviews/delete/${reviewId}`, {
+            method: 'DELETE',
+        })
+        .then(response => refreshReviews())
+        .catch(error => console.error('Error:', error));
+    }
+
+    async function refreshReviews() {
+        document.getElementById("user_reviews").innerHTML = "";
+        const reviews = await getReviews();
+        let htmlString = "";
+        let classNameString = "";
+        let totalRatings = 0;
+        let totalElement = 0;
+        reviews.forEach((review) => {
+            totalRatings += review.ratings;
+            totalElement++;
+            
+            if ("{{ user.username }}" !== review.username) {
+                htmlString += `{% include 'user-review.html' with review=review %}`;
+            } else {
+                htmlString += `
+                {% include 'user-review-2.html' with review=review %}
+                {% include 'delete-modal.html' with review=review %}
+                `;
+            }
+        });
+        let tempatRating = document.getElementById("tempat-rating");
+        if (totalElement !== 0) {
+            tempatRating.textContent = (totalRatings / totalElement).toFixed(2);
+        } else {
+            tempatRating.textContent = "Belum ada rating";
+        }
+        document.getElementById("user_reviews").innerHTML = htmlString;
+    }
+    refreshReviews();
+</script>
+{% endblock content %}

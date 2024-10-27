@@ -1,0 +1,34 @@
+<dialog id="review_modal" class="modal">
+    <div class="modal-box bg-white border-2 border-[#C6E0D1] rounded-lg text-black shadow-lg">
+        <h3 class="text-lg font-bold text-[#FE9642]">Leave a Review</h3>
+        <p class="py-4 text-gray-700">Please provide your rating and comment below.</p>
+        
+        <form id="reviewForm">
+            {% csrf_token %}
+            <input type="hidden" id="review_id" name="review_id" value=""> 
+            <!-- Ratings Field -->
+            <div class="form-control">
+                <label for="ratings" class="label text-[#03A4C1]">Rating</label>
+                <select id="ratings" name="ratings" class="select bg-[#C6E0D1] text-black border-[#03A4C1] focus:ring-[#FE9642] focus:border-[#FE9642]">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <!-- Comments Field -->
+            <div class="form-control">
+                <label for="comments" class="label text-[#03A4C1]">Comments</label>
+                <textarea id="comments" name="comments" class="textarea bg-[#C6E0D1] text-black border-[#03A4C1] focus:ring-[#FE9642] focus:border-[#FE9642]" rows="4" placeholder="Add your comments..."></textarea>
+            </div>
+            
+            <div class="modal-action">
+                <button type="submit" id="submitProductEntry" class="btn bg-[#03A4C1] hover:bg-[#28D7CE] text-white">Submit Review</button>
+                <button type="button" class="btn bg-gray-300 hover:bg-gray-400 text-black" onclick="closeReviewModal();">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>

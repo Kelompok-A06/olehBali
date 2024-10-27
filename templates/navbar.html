@@ -1,6 +1,6 @@
 {% load static %}
 {% if user.is_authenticated %}
-<div class="navbar bg-white text-black font-bold">
+<div class="navbar bg-white text-black font-bold fixed top-0 left-0 w-full z-50 shadow-lg">
   <div class="navbar-start p-0 m-0">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -26,7 +26,7 @@
         <li>
           <details>
             <summary>Community</summary>
-            <ul class="p-2">
+            <ul class="p-2 z-10">
               <li><a>Forum</a></li>
               <li><a>Ask Toko</a></li>
             </ul>
@@ -36,7 +36,7 @@
     </div>
     <a class="btn btn-ghost text-xl">
       <img src="{% static 'images/olehBali-logo.png' %}" class="inline-block" alt="Logo Oleh Bali" width="50">
-      <span class="text-[#03A4C1] p-0 m-0">oleh<span class="text-[#FE9642] p-0 m-0">Bali</span></span>
+      <span class="text-[#03A4C1] p-0 m-0">Oleh<span class="text-[#FE9642] p-0 m-0">Bali</span></span>
     </a>
     </div>
     <div class="navbar-center hidden lg:flex">
@@ -47,18 +47,32 @@
       <li>
         <details>
           <summary>Community</summary>
+
           <ul class="p-2 bg-white/80">
             <li><a href="/community/">Forum</a></li>
+          <ul class="p-2 bg-white/80 z-10">
+            <li><a>Forum</a></li>
             <li><a>Ask Toko</a></li>
           </ul>
         </details>
       </li>
     </ul>
   </div>
-  <div class="navbar-end">
+  <div class="navbar-end space-x-4">
+    <!-- User Profile Access -->
+    <a href="{% url 'userprofile:dashboard' user.pk %}" class="btn btn-ghost btn-circle">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 18.364A9 9 0 1118.364 5.12M15 11a3 3 0 11-6 0 3 3 0 016 0zm6 7.5a6 6 0 00-12 0" />
+      </svg>
+    </a>
+  
+  <!-- <div class="navbar-end"> -->
     <a href="{% url 'authentication:logout' %}">
       <button class="btn btn-outline btn-error">Logout</button>
     </a>
   </div>
+</div>
+
+<div style="padding-top: 65px;">
 </div>
 {% endif %}

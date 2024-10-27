@@ -1,0 +1,383 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<style>
+  body {
+    background: linear-gradient(45deg, #FE9642, #ffbe98);
+    min-height: 100vh;
+  }
+
+  .menu .active {
+    background-color: #03A4C1 !important;
+    color: white !important;
+  }
+
+  .custom-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .input {
+    color: #000;
+  }
+
+  .avatar-upload {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .avatar-preview {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pilih-file {
+    background: #2D3748;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin-top: 8px;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .file-info {
+    color: #666;
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+
+  .error-message {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+
+  .loading-spinner {
+    display: none;
+    margin-left: 8px;
+  }
+
+  #editProfileModal .bg-white {
+    max-height: 80vh; /* Set batas tinggi maksimal modal */
+    overflow-y: auto; /* Aktifkan scroll vertikal */
+  }
+  
+</style>
+{% endblock meta %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<script>
+  const USER_ID = "{{ user.id|escapejs }}";
+</script>
+
+<div class="container mx-auto p-4 min-h-screen">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <!-- Sidebar -->
+    <div class="bg-white rounded-2xl custom-shadow p-6 flex flex-col min-h-[200px]">
+      <div>
+        <h3 class="text-xl font-bold mb-4 text-gray-800">My Account</h3>
+        <ul class="menu bg-base-200 rounded-xl">
+          <li><a href="{% url 'userprofile:dashboard' user.pk %}" class="active mb-2 hover:bg-[#03A4C1] hover:text-white">Account Information</a></li>
+          {% if show_wishlist %}
+            <li><a href="/wishlist" class="hover:bg-[#03A4C1] hover:text-white">My Wishlist</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      
+      <div class="mt-auto pt-4">
+        <button onclick="openDeleteModal()" class="btn bg-red-600 hover:bg-red-500 text-white w-full">Delete Account</button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:col-span-3 bg-white rounded-2xl custom-shadow p-6">
+      <h2 class="text-2xl font-bold mb-6 text-gray-800">Account Information</h2>
+      
+      <!-- Profile Display Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gray-50 p-6 rounded-xl">
+          <h3 class="font-bold mb-4 text-gray-700">Information</h3>
+          <div class="flex flex-col items-center">
+            <div class="avatar mb-4">
+              <div class="w-24 h-24 rounded-full overflow-hidden">
+                <img id="currentAvatar" 
+                     src="{% if profile.avatar %}{{ profile.avatar.url }}{% else %}{% static 'avatars/default_avatar.png' %}{% endif %}" 
+                     alt="Profile Avatar"
+                     class="w-full h-full object-cover" />
+              </div>
+            </div>
+            <button onclick="openEditModal()" class="text-[#03A4C1] hover:text-[#FE9642] transition-colors duration-300 underline">
+              Edit Profile
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text font-bold">Name*</span>
+            </label>
+            <input type="text" id="displayName" value="{{ profile.name|default:user.username }}" class="input input-bordered focus:border-[#03A4C1]" disabled />
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text font-bold">Phone Number*</span>
+            </label>
+            <input type="tel" id="displayPhone" value="{{ profile.phone_number|default:'' }}" class="input input-bordered focus:border-[#03A4C1]" disabled />
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text font-bold">Email*</span>
+            </label>
+            <input type="email" id="displayEmail" value="{{ profile.email|default:user.email }}" class="input input-bordered focus:border-[#03A4C1]" disabled />
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text font-bold">Birthdate*</span>
+            </label>
+            <input type="date" id="displayBirthdate" value="{{ profile.birthdate|date:'Y-m-d'|default:'' }}" class="input input-bordered focus:border-[#03A4C1]" disabled />
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Profile Modal -->
+      <div id="editProfileModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="bg-white rounded-lg max-w-2xl mx-auto mt-20 p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold">Edit Profile</h3>
+            <button onclick="closeEditModal()" class="text-gray-500 hover:text-gray-700">
+              <span class="text-2xl">&times;</span>
+            </button>
+          </div>
+          
+          <form id="editProfileForm" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="avatar-upload mb-6">
+              <div class="avatar-preview">
+                <img id="avatarPreview" 
+                     src="{% if profile.avatar %}{{ profile.avatar.url }}{% else %}{% static 'avatars/default_avatar.png' %}{% endif %}"
+                     alt="Profile Avatar" />
+              </div>
+              <div class="mt-2">
+                <label class="pilih-file">
+                  PILIH FILE
+                  <input type="file" name="avatar" id="avatarInput" accept="image/*" style="display: none;" />
+                </label>
+                <div class="file-info" id="fileInfo">No file chosen</div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="form-control">
+                <label class="label">Name*</label>
+                <input type="text" name="name" id="editName" class="input input-bordered" value="{{ profile.name|default:user.username }}" required />
+                <div class="error-message" id="nameError"></div>
+              </div>
+
+              <div class="form-control">
+                <label class="label">Phone Number*</label>
+                <input type="tel" name="phone_number" id="editPhone" class="input input-bordered" value="{{ profile.phone_number|default:'' }}" required />
+                <div class="error-message" id="phoneError"></div>
+              </div>
+
+              <div class="form-control">
+                <label class="label">Email*</label>
+                <input type="email" name="email" id="editEmail" class="input input-bordered" value="{{ profile.email|default:user.email }}" required />
+                <div class="error-message" id="emailError"></div>
+              </div>
+
+              <div class="form-control">
+                <label class="label">Birthdate*</label>
+                <input type="date" name="birthdate" id="editBirthdate" class="input input-bordered" value="{{ profile.birthdate|date:'Y-m-d'|default:'' }}" required />
+                <div class="error-message" id="birthdateError"></div>
+              </div>
+            </div>
+
+            <div class="flex justify-end mt-6 gap-2">
+              <button type="button" onclick="closeEditModal()" class="btn btn-outline">Cancel</button>
+              <button type="submit" class="btn bg-[#03A4C1] hover:bg-[#028091] text-white">
+                <span>Save Changes</span>
+                <div class="loading-spinner">
+                  <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Account Modal -->
+<div id="deleteAccountModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+  <div class="bg-white rounded-lg max-w-md mx-auto mt-20 p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold">Delete Account</h3>
+      <button onclick="closeDeleteModal()" class="text-gray-500 hover:text-gray-700">
+        <span class="text-2xl">&times;</span>
+      </button>
+    </div>
+    <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+    <div class="flex justify-end mt-6 gap-2">
+      <button type="button" onclick="closeDeleteModal()" class="btn btn-outline">Cancel</button>
+      <button id="confirmDeleteBtn" class="btn bg-red-600 hover:bg-red-500 text-white">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function showLoadingSpinner() {
+    document.querySelector('.loading-spinner').style.display = 'inline-block';
+}
+
+function hideLoadingSpinner() {
+    document.querySelector('.loading-spinner').style.display = 'none';
+}
+
+function openEditModal() {
+    document.getElementById('editProfileModal').classList.remove('hidden');
+}
+
+function closeEditModal() {
+    document.getElementById('editProfileModal').classList.add('hidden');
+    document.querySelectorAll('.error-message').forEach(elem => {
+        elem.textContent = '';
+    });
+}
+
+document.getElementById('avatarInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('avatarPreview').src = e.target.result;
+            document.getElementById('fileInfo').textContent = file.name;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+document.getElementById('editProfileForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    showLoadingSpinner();
+    
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch(`/userprofile/update-profile/${USER_ID}/`, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            document.getElementById('displayName').value = formData.get('name');
+            document.getElementById('displayPhone').value = formData.get('phone_number');
+            document.getElementById('displayEmail').value = formData.get('email');
+            document.getElementById('displayBirthdate').value = formData.get('birthdate');
+            
+            if (data.data.avatar_url) {
+                document.getElementById('currentAvatar').src = data.data.avatar_url;
+            }
+            
+            closeEditModal();
+            alert('Profile updated successfully!');
+        } else {
+            Object.keys(data.errors || {}).forEach(key => {
+                const errorElem = document.getElementById(`${key}Error`);
+                if (errorElem) {
+                    errorElem.textContent = data.errors[key];
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while updating profile');
+    } finally {
+        hideLoadingSpinner();
+    }
+});
+
+document.getElementById('editProfileModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeEditModal();
+    }
+});
+
+function openDeleteModal() {
+    document.getElementById('deleteAccountModal').classList.remove('hidden');
+}
+
+function closeDeleteModal() {
+    document.getElementById('deleteAccountModal').classList.add('hidden');
+}
+
+document.getElementById('confirmDeleteBtn').addEventListener('click', async function() {
+    try {
+        const response = await fetch('/userprofile/delete-account/', {
+            method: 'DELETE',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify({confirm: true})
+        });
+
+        const data = await response.json();
+
+        if (data.status === 'success') {
+            alert('Account deleted successfully!');
+            window.location.href = data.redirect_url;
+        } else {
+            alert('Error deleting account: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while deleting account');
+    }
+});
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+{% endblock content %}
