@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from catalog.models import Product
 from .models import Wishlist
+from django.contrib.auth.models import User
 from authentication.models import User
 
 class WishlistViewTests(TestCase):
@@ -16,9 +17,7 @@ class WishlistViewTests(TestCase):
             deskripsi="Test Description"
         )
         self.client.login(username='testuser', password='belajardjango')
-
-        self.wishlist = Wishlist.objects.create(user=self.user)
-        self.wishlist.product.add(self.product)
+        self.wishlist = Wishlist.objects.create(user=self.user, product=self.product)
 
     def test_show_wishlist_view(self):
         response = self.client.get(reverse('wishlist:show_wishlist'))
@@ -40,7 +39,7 @@ class WishlistViewTests(TestCase):
                 'nama': self.product.nama,
                 'toko': self.product.toko,
                 'harga': self.product.harga,
-                'gambar': self.product.gambar or '',
+                'gambar': self.product.gambar if self.product.gambar else '',
             }
         ]
         self.assertJSONEqual(response.content, {'wishlist_items': expected_response})
@@ -52,16 +51,29 @@ class WishlistViewTests(TestCase):
         self.assertFalse(Wishlist.objects.filter(user=self.user, product=self.product).exists())
 
     def test_delete_wishlist_json_nonexistent_product(self):
-        response = self.client.post(reverse('wishlist:delete_wishlist_json', args=[999]))  
+        response = self.client.post(reverse('wishlist:delete_wishlist_json', args=[999]))
         self.assertEqual(response.status_code, 404)
         self.assertJSONEqual(response.content, {'status': 'error', 'message': 'Product not found in wishlist'})
+
+    def test_add_wishlist_view(self):
+        response = self.client.post(reverse('wishlist:add_wishlist', args=[self.product.id]))
+        self.assertRedirects(response, reverse('catalog:catalog'))
+        self.assertTrue(Wishlist.objects.filter(user=self.user, product=self.product).exists())
+
+    def test_add_wishlist_json(self):
+        response = self.client.post(reverse('wishlist:add_wishlist_json', args=[self.product.id]))
+        self.assertEqual(response.status_code, 200)
+        expected_response = {
+            'status': 'info',  
+            'message': 'Product is already in your wishlist',
+        }
+        self.assertJSONEqual(response.content, expected_response)
 
     def test_unauthorized_access(self):
         self.client.logout()
         response = self.client.get(reverse('wishlist:show_wishlist'))
-        self.assertEqual(response.status_code, 302)  
+        self.assertEqual(response.status_code, 302)
         response = self.client.get(reverse('wishlist:show_wishlist_json'))
-        self.assertEqual(response.status_code, 302) 
+        self.assertEqual(response.status_code, 302)
         response = self.client.post(reverse('wishlist:delete_wishlist_json', args=[self.product.id]))
         self.assertEqual(response.status_code, 302)
-
