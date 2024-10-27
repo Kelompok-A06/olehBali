@@ -47,8 +47,9 @@
   <!-- Community Content -->
   <div id="community-content" class="bg-[#fe9642]/5 py-12">
     <div class="container mx-auto px-4">
-      <div id="post-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {% for post in posts %}
+      <!-- Ubah arah grid dan urutan -->
+      <div id="post-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 grid-flow-row-dense">
+        {% for post in posts|dictsortreversed:"created_at" %}
         <div class="post-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300" data-id="{{ post.id }}">
           <!-- Header Section -->
           <div class="flex items-start justify-between mb-4">
@@ -260,54 +261,83 @@ $(document).ready(function() {
 
     // Create Post Form Handler
     $('#create-post-form').on('submit', function(event) {
-        event.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            success: function(response) {
-                if (response.success) {
-                    const newPost = `
-                        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300">
-                            <div class="flex items-start justify-between mb-4">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-[#21aec7] rounded-full flex items-center justify-center shadow-md">
-                                        <div class="w-8 h-8 bg-white rounded-full"></div>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold text-xl text-gray-800">${response.author}</h3>
-                                        <p class="text-sm text-gray-600">${response.created_at}</p>
-                                    </div>
-                                </div>
-                                ${response.is_author ? `
-                                    <button class="text-red-500 hover:text-red-700 transition duration-300 p-2 rounded-full hover:bg-red-50 deletePost"
-                                            data-id="${response.post_id}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" 
-                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M3 6h18"></path>
-                                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                                        </svg>
-                                    </button>
-                                ` : ''}
-                            </div>
-                            <div class="mb-6 text-gray-700">
-                                <h4 class="font-semibold mb-2">${response.title}</h4>
-                                ${response.content}
-                            </div>
-                            <button class="mt-4 px-4 py-2 bg-black text-white rounded-full text-sm hover:bg-gray-800 transition duration-300 transform hover:scale-105 view-post-detail"
-                                    data-id="${response.post_id}">
-                                see detail
-                            </button>
-                        </div>
-                    `;
-                    $('#post-list').prepend(newPost);
-                    $('#createPostModal').addClass('hidden').removeClass('flex');
-                    $('#create-post-form')[0].reset();
-                }
+    event.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: $(this).attr('action'),
+        data: $(this).serialize(),
+        success: function(response) {
+            if (response.success) {
+              const newPost = `
+              <div class="post-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300" data-id="${response.post_id}">
+                  <!-- Header Section -->
+                  <div class="flex items-start justify-between mb-4">
+                      <div class="flex items-center gap-4">
+                          <div class="w-12 h-12 bg-[#21aec7] rounded-full flex items-center justify-center shadow-md">
+                              <div class="w-8 h-8 bg-white rounded-full"></div>
+                          </div>
+                          <div>
+                              <h3 class="font-bold text-xl text-gray-800">${response.author}</h3>
+                              <p class="text-sm text-gray-600">${response.created_at}</p>
+                          </div>
+                      </div>
+                      ${response.is_author ? `
+                          <div class="flex gap-2">
+                              <button 
+                                  class="text-red-500 hover:text-red-700 transition duration-300 p-2 rounded-full hover:bg-red-50 deletePost"
+                                  data-id="${response.post_id}"
+                              >
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" 
+                                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                      <path d="M3 6h18"></path>
+                                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                  </svg>
+                              </button>
+                          </div>
+                      ` : ''}
+                  </div>
+
+                  <!-- Content Section -->
+                  <div class="mb-6">
+                      <h4 class="font-semibold text-lg text-gray-800 mb-2">${response.title}</h4>
+                      <div class="text-gray-700 max-h-32 overflow-y-auto pr-2">
+                          ${response.content}
+                      </div>
+                  </div>
+
+                  <!-- Comments Preview Section -->
+                  <div class="space-y-3 mb-4">
+                      <h5 class="font-semibold text-gray-800">Recent Comments</h5>
+                      <p class="text-center text-gray-500 italic text-sm">No comments yet</p>
+                  </div>
+
+                  <!-- Footer Section -->
+                  <button 
+                      class="w-full px-4 py-2 bg-black text-white rounded-full text-sm hover:bg-gray-800 transition duration-300 transform hover:scale-105 view-post-detail"
+                      data-id="${response.post_id}"
+                  >
+                      see detail
+                  </button>
+              </div>`;
+                  // Tambahkan post baru ke awal grid
+                  const postList = $('#post-list');
+                  const firstPost = postList.children().first();
+                    
+                  // Jika ada post yang sudah ada, masukkan sebelumnya
+                  if (firstPost.length) {
+                      $(newPost).insertBefore(firstPost);
+                  } else {
+                        // Jika belum ada post, tambahkan ke container
+                      postList.append(newPost);
+                  }
+                    
+                  $('#createPostModal').addClass('hidden').removeClass('flex');
+                  $('#create-post-form')[0].reset();
             }
-        });
+        }
     });
+});
 
     // Post Detail View
     $(document).on('click', '.view-post-detail', function() {
