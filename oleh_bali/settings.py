@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'wishlist',
     'catalog',
     'community',
+    'askToko',
 ]
 
 MIDDLEWARE = [
