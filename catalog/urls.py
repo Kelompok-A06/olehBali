@@ -1,9 +1,9 @@
 from django.urls import path
-from catalog.views import catalog, show_product_detail
+from catalog.views import catalog, delete_product
 
 app_name = 'catalog'
 
 urlpatterns = [
     path('', catalog, name='catalog'),
-    path('<int:id>', show_product_detail, name='show_product_detail')
+    path('delete_product/<int:product_id>/', delete_product, name='delete_product'),
 ]
