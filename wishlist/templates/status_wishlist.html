@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-10">
+    <h2 class="text-center text-2xl font-bold mb-6">Update Product Status</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-4">{{ form.product_status }}</div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
+        <a href="{% url 'wishlist:show_wishlist' %}" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}
