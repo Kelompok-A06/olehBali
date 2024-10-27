@@ -1,0 +1,12 @@
+/* Initial hidden state for animated elements */
+.scroll-animation {
+    opacity: 0;
+    transform: translateY(50px); /* Move elements up */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Active state when elements come into view */
+.scroll-animation.visible {
+    opacity: 1;
+    transform: translateY(0); /* Reset position */
+}

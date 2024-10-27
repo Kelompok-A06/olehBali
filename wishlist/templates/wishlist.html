@@ -48,27 +48,37 @@
     <br>
 </div>
 
-<script>
-    function removeFromWishlist(productId) {
-        fetch(`/wishlist/json/delete_wishlist/${productId}/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': '{{ csrf_token }}'
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                const itemElement = document.getElementById(`wishlist-item-${productId}`);
-                if (itemElement) {
-                    itemElement.remove();
+    <script>
+        function wishlistAction(action, productId) {
+            fetch(`/wishlist/json/${action}_wishlist/${productId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    if (action === 'delete') {
+                        document.getElementById(`wishlist-item-${productId}`)?.remove();
+                    } else {
+                        alert(data.message);
+                        location.reload();
+                    }
+                } else {
+                    alert(data.message);
                 }
-            } else {
-                console.error('Error:', data.message);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-</script>
+            })
+            .catch(console.error);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.remove-wishlist-btn, .add-wishlist-btn').forEach(button => {
+                const productId = button.getAttribute('data-id');
+                const action = button.classList.contains('remove-wishlist-btn') ? 'delete' : 'add';
+                button.addEventListener('click', () => wishlistAction(action, productId));
+            });
+        });
+    </script>
 {% endblock content %}
