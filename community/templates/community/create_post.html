@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Create a New Post</h1>
+
+    <form id="post-form" method="post" action="{% url 'community:create_post' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="post-status"></div>
+
+    <h2>Posts</h2>
+    <ul id="post-list">
+        {% for post in posts %}
+            <li><strong>{{ post.title }}</strong> by {{ post.author.username }} on {{ post.created_at }}</li>
+        {% endfor %}
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#post-form').on('submit', function(event) {
+                event.preventDefault();  // Prevent page reload
+
+                var formData = $(this).serialize();  // Serialize form data
+
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),  // Use the form's action URL
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            // Add the new post to the post list
+                            $('#post-list').prepend(
+                                '<li><strong>' + response.title + '</strong> by ' 
+                                + response.author + ' on ' + response.created_at + '</li>'
+                            );
+
+                            // Clear the form and show a success message
+                            $('#post-form')[0].reset();
+                            $('#post-status').html('<p style="color: green;">Post added successfully!</p>');
+                        }
+                    },
+                    error: function(response) {
+                        $('#post-status').html('<p style="color: red;">Error adding post. Please try again.</p>');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
