@@ -1,4 +1,4 @@
-# user_profile/forms.py
+# userprofile/forms.py
 
 from django import forms
 from .models import Profile
