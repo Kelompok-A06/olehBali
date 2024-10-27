@@ -113,7 +113,10 @@
     <div class="product-right">
         <div class="product-header">
             <h1 class="product-name">{{ product.nama }}</h1>
-            <button class="wishlist-button">Add to Wishlist</button>
+            <form action="{% url 'wishlist:add_wishlist' product.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="wishlist-button">Add to Wishlist</button>
+            </form>
         </div>
         <h2 class="product-price">Rp{{ product.harga }}</h2>
         <h3 class="product-description">{{ product.deskripsi }}</h3>
