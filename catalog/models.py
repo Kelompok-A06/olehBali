@@ -10,7 +10,6 @@ class Product(models.Model):
         ('lain_lain', 'Lain-lain'),
     ]
 
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     nama = models.CharField(max_length=255)
     kategori = models.CharField(max_length=50, choices=CATEGORY_TYPES)
     harga = models.IntegerField()
