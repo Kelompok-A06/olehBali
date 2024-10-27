@@ -120,10 +120,3 @@ def delete_account(request):
     else:
         return JsonResponse({'status': 'method_not_allowed'}, status=405)
 
-@login_required
-def wishlist_dashboard(request):
-    # Placeholder untuk wishlist, nanti disesuaikan dengan model wishlist
-    context = {
-        "user": request.user
-    }
-    return render(request, 'wishlist.html', context)
