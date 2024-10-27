@@ -21,6 +21,12 @@
         </div>
 
         <div class="card-actions justify-end mt-4">
+            <form action="{% url 'wishlist:add_wishlist' product.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn bg-[#FE9642] hover:bg-[#CB6411] text-white mr-2">
+                    Add to Wishlist
+                </button>
+            </form>
             <button onclick="review_modal.showModal()" class="btn bg-[#03A4C1] hover:bg-[#28D7CE] text-white">
                 Add review
             </button>
