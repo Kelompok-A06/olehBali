@@ -9,6 +9,7 @@ class Product(models.Model):
         ('pakaian', 'Pakaian'),
         ('lain_lain', 'Lain-lain'),
     ]
+
     
     nama = models.CharField(max_length=255)
     kategori = models.CharField(max_length=50, choices=CATEGORY_TYPES)

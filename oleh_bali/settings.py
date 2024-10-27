@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(%06g&y$@rsmyasxkcuz3s!k35(39lh67x!vj++oaqfz-%6h=$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# PRODUCTION = os.getenv("PRODUCTION", False)
-DEBUG = True
+PRODUCTION = os.getenv("PRODUCTION", False)
+DEBUG =  not PRODUCTION
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "muhammad-hibrizi-olehbali.pbp.cs.ui.ac.id"]
 
@@ -134,7 +134,7 @@ else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static') # merujuk ke /static root project pada mode production
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

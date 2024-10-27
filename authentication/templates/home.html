@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block meta %}
 {% endblock meta %}
 {% block content %}
 
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
 <div class="bg-gray-200" >
-    <div class="flex justify-center py-4 relative">
+    <div class="flex justify-center py-4 relative ">
         <div class="text-center">
-            <img src="static/images/purahome.png" class="rounded-[40px] inline-block mx-5 max-w-[90%]" />
+            <img src="static/images/purahome.png" class="rounded-[40px] inline-block mx-5 max-w-[90%] " />
             <div class="absolute top-0 left-0 h-full w-full flex items-center justify-end pr-4 md:pr-20">
                 <div class="text-white text-right space-y-4 max-w-lg pr-4 md:pr-16">
                     <h1 class="text-4xl font-bold">Halo, {{ user.username }}!</h1>
@@ -20,14 +22,14 @@
     </div>
     
     <div class="text-center mt-10 py-10">
-        <p class="text-orange-500 font-bold ">We serve you<p>
-        <h2 class="text-5xl text-black font-bold mt-2">Best Features</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-gray-600">
+        <p class="text-orange-500 font-bold scroll-animation">We serve you<p>
+        <h2 class="text-5xl text-black font-bold mt-2 scroll-animation">Best Features</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-gray-600 scroll-animation">
             Our store offers a wide variety of Bali souvenirs, including food, clothing, and handmade crafts.
             You'll find all unique items representing Bali's rich culture.
         </p>
     </div>
-    <div class="bg-gray-200">
+    <div class="bg-gray-200 scroll-animation">
         <div class="flex justify-center py-10">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white rounded-[30px] shadow-lg p-6 text-center mx-2 transition duration-300 hover:bg-[#FE9642] hover:text-white" style="width: 250px;">
@@ -68,7 +70,7 @@
             </div>
         </div>
     
-        <div class="text-center rounded-[30px] mx-20 my-20 py-10 bg-white shadow-lg">
+        <div class="text-center rounded-[30px] mx-20 my-20 py-10 bg-white shadow-lg scroll-animation">
             <br>
             <h5 class="text-orange-500 font-bold">Let’s Hear</h5>
             <h2 class="text-5xl text-black font-bold mt-2">What People Say</h2>
@@ -76,10 +78,44 @@
                 Hear from our satisfied customers! Their testimonials reflect the quality and ease of finding the perfect Bali souvenirs, showcasing the positive experiences they’ve had with our offerings.
             </p> 
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 break-words">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 break-words scroll-animation">
             {% for review in reviews %}
                 {% include "review-card.html" with review=review %}    
             {% endfor %}
         </div><br><br>
     </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollElements = document.querySelectorAll('.scroll-animation');
+    
+            const elementInView = (element, offset = 0) => {
+                const elementTop = element.getBoundingClientRect().top;
+                return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset);
+            };
+    
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+    
+            const hideScrollElement = (element) => {
+                element.classList.remove('visible');
+            };
+    
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 50)) {
+                        displayScrollElement(el);
+                    } else {
+                        hideScrollElement(el);
+                    }
+                });
+            };
+    
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+        });
+    </script>    
 {% endblock content %}

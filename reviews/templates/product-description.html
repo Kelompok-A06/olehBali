@@ -20,11 +20,20 @@
             <p class="text-[#FE9642] font-bold mt-2">Alamat Toko</p>
             <p class="text-black">{{ product.alamat }}</p>
 
+            <p class="text-[#FE9642] font-bold mt-2">Harga</p>
+            <p class="text-black">Rp{{ product.harga }}</p>
+
             <p class="text-[#FE9642] font-bold mt-2">Rata-rata rating</p>
             <p id="tempat-rating" class="text-black"></p>
         </div>
 
         <div class="card-actions justify-end mt-4">
+            <form action="{% url 'wishlist:add_wishlist' product.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn bg-[#FE9642] hover:bg-[#CB6411] text-white mr-2">
+                    Add to Wishlist
+                </button>
+            </form>
             <button onclick="review_modal.showModal()" class="btn bg-[#03A4C1] hover:bg-[#28D7CE] text-white">
                 Add review
             </button>
