@@ -3,6 +3,7 @@ from django.urls import reverse
 from catalog.models import Product
 from .models import Wishlist
 from django.contrib.auth.models import User
+from authentication.models import User
 
 class WishlistViewTests(TestCase):
     def setUp(self):
