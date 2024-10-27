@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Add Product</title>
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .form-container input,
+    .form-container select,
+    .form-container textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: white;
+    }
+
+    .form-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28D7CE;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .form-container button:hover {
+        background-color: #00B3B3;
+    }
+</style>
+{% endblock meta %}
+
+{% block content %}
+<div class="form-container">
+    <form method="POST" action="{% url 'catalog:add_product' %}" enctype="multipart/form-data">  
+        {% csrf_token %}
+        <input type="text" name="nama" placeholder="Product Name" required>
+        
+        <select name="kategori" required>
+            <option value="kerajinan_tangan">Kerajinan Tangan</option>
+            <option value="makanan_minuman">Makanan/Minuman</option>
+            <option value="pakaian">Pakaian</option>
+            <option value="lain_lain">Lain-lain</option>
+        </select>
+        
+        <input type="number" name="harga" placeholder="Price" required>
+        <input type="text" name="alamat" placeholder="Store Address" required>
+        
+        <textarea name="deskripsi" placeholder="Product Description" required></textarea>
+
+        <input type="file" name="gambar_file" accept="image/*" required>  
+        
+        <button type="submit">Add Product</button>
+    </form>
+</div>
+{% endblock content %}

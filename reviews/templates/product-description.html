@@ -1,6 +1,10 @@
 <div class="card card-compact bg-gray-100 w-96 shadow-xl z-0">
     <figure>
-        <img src="{{ product.gambar }}" alt="gambar {{ product.nama }}" />
+        {% if product.gambar_file %}
+            <img src="{{ product.gambar_file.url }}" alt="{{ product.nama }}" />
+        {% else %}
+            <img src="{{ product.gambar }}" alt="{{ product.nama }}" />
+    {% endif %}
     </figure>
     <div class="card-body">
         <h2 class="card-title text-[#03A4C1]">{{ product.nama }}</h2>
