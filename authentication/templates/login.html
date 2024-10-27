@@ -90,10 +90,12 @@
         {% if messages %}
             <div class="text-center my-4">
                 {% for message in messages %}
-                    {% if message.tags == 'success' %}
-                        <div id="success-message" class="text-[#03A4C1]">{{ message }}</div>
-                    {% else %}
-                        <div id="failed-message" class="text-red-500">{{ message }}</div>
+                    {% if 'auth' in message.tags %}
+                        {% if message.level_tag == 'success' %}
+                            <div id="success-message" class="text-[#03A4C1]">{{ message }}</div>
+                        {% else %}
+                            <div id="failed-message" class="text-red-500">{{ message }}</div>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             </div>

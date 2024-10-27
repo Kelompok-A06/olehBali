@@ -1,22 +1,74 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block meta %}
-<title> Wishlist OlehBali</title>
+<title>Wishlist OlehBali</title>
 {% endblock meta %}
 
 {% block content %}
-<div class="flex justify-center py-10 bg-gray-100">
-    <div class="w-full max-w-4xl bg-white p-8 shadow-md rounded-lg">
-        <div class="flex justify-between items-center">
-            <h1 class="text-4xl font-bold text-black">
-                Your <span class="text-[#F39C12]">Wishlist</span>
-            </h1>
-        </div>
 
-        <div class="mt-10">
-            <p class="text-gray-700">Your wishlist is currently empty.</p>
-            <br>
-        </div>
+<link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+
+<div class="flex flex-col items-center py-10 bg-gray-100">
+    <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-black">
+            Your <span class="text-[#F39C12]">Wishlist</span>
+        </h1> <br>
     </div>
+
+    {% if wishlist_items %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        {% for item in wishlist_items %}
+        <div class="wishlist-card bg-white p-3 shadow-lg rounded-[30px]">
+            <div class="mb-2">
+                <img src="{{ item.gambar }}" alt="{{ item.nama }}" class="rounded-[20px] w-60 h-48 object-cover">
+            </div>
+            <h4 class="text-lg text-black font-bold mb-0">{{ item.nama }}</h4>
+            <p class="text-gray-500 text-s mb-2">{{ item.toko }}</p>
+            <p class="font-semibold text-gray-800 mb-4">Rp {{ item.harga }}</p>
+            <form method="post" action="{% url 'wishlist:delete_wishlist' item.id %}">
+                {% csrf_token %}
+                <button type="submit" class="rounded-[20px] bg-[#F39C12] text-white px-4 py-2 hover:bg-[#03A4C1]">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="flex flex-col items-center">
+        <img src="{% static 'images/empty_wishlist.png' %}" class="mt-3" alt="Empty Wishlist" width="300">
+        <div class="flex justify-center w-full h-[10vh] mt-3">
+            <p class="text-gray-500 text-xl font-normal">Your wishlist is currently empty.</p>
+        </div>
+        <button onclick="window.location.href='/catalog'" class="bg-transparent text-[#F39C12] border-2 border-[#F39C12] rounded-lg px-4 py-2 mt-1 hover:bg-[#F39C12] hover:text-white transition duration-300">
+            See Products
+        </button>
+    </div>
+    {% endif %}
+    <br>
 </div>
+
+<script>
+    function removeFromWishlist(productId) {
+        fetch(`/wishlist/json/delete_wishlist/${productId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                const itemElement = document.getElementById(`wishlist-item-${productId}`);
+                if (itemElement) {
+                    itemElement.remove();
+                }
+            } else {
+                console.error('Error:', data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
 {% endblock content %}

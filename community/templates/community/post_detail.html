@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="text-2xl font-bold">{{ post.title }}</h2>
+  <p>{{ post.content }}</p>
+  <p>By {{ post.author.username }} on {{ post.created_at }}</p>
+
+  {% if post.author == request.user %}
+    <a href="{% url 'community:edit_post' post.id %}" class="btn btn-secondary">Edit</a>
+    <form action="{% url 'community:delete_post' post.id %}" method="post" class="inline">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  {% endif %}
+
+  <h3 class="text-xl font-semibold">Comments</h3>
+  <ul id="comment-list" class="mb-4">
+    {% for comment in comments %}
+      <li class="border-b py-2">{{ comment.content }} - by {{ comment.author.username }}</li>
+    {% endfor %}
+  </ul>
+
+  <h4 class="text-lg font-semibold">Add a Comment</h4>
+  <form id="comment-form" method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

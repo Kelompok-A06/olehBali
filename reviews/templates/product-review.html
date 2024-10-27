@@ -30,7 +30,7 @@
     }
 
     async function getChosenReviews(reviewId){
-        const url = `/reviews/api/get/${reviewId}`;
+        const url = `/product/api/get/${reviewId}`;
         return fetch(url).then((res) => res.json());
     }
 
@@ -74,6 +74,15 @@
         e.preventDefault();
         addReview(); 
     });
+
+    function deleteReview(reviewId) {
+        console.log(reviewId)
+        fetch(`/product/delete/${reviewId}`, {
+            method: 'DELETE',
+        })
+        .then(response => refreshReviews())
+        .catch(error => console.error('Error:', error));
+    }
 
     async function refreshReviews() {
         document.getElementById("user_reviews").innerHTML = "";

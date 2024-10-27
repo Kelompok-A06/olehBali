@@ -8,8 +8,9 @@ from django.utils.html import strip_tags
 from authentication.models import User
 from django.core import serializers
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+@login_required(login_url='/login')
 def show_review(request, id):
     product = Product.objects.get(pk=id)
     context = {
@@ -19,6 +20,12 @@ def show_review(request, id):
     }
     return render(request, "product-review.html", context)
 
+@login_required(login_url='/login')
+def review_json_all(request):
+    reviews = Reviews.objects.all()
+    return HttpResponse(serializers.serialize("json", reviews), content_type="application/json")
+
+@login_required(login_url='/login')
 def review_json(request, id):
     product = Product.objects.get(pk=id)
     reviews = Reviews.objects.filter(product=product)
@@ -34,6 +41,7 @@ def review_json(request, id):
     
     return JsonResponse(review_data, safe=False) 
 
+@login_required(login_url='/login')
 def chosen_review_json(request, id):
     review = Reviews.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", review), content_type="application/json")
@@ -54,7 +62,7 @@ def add_review(request, id):
                 'name': 'Comments cannot be blank.',
             }
         }, status=400)
-    print(review_id)
+
     if not review_id:
         new_review = Reviews(
             ratings=ratings, comments=comments,
@@ -70,10 +78,9 @@ def add_review(request, id):
         review.save()
         return JsonResponse({'status': 'UPDATED'}, status=200)
 
-
-def delete_review(request, id):
+@login_required(login_url='/login')
+@csrf_exempt
+def delete_review_json(request, id):
     review = Reviews.objects.get(pk=id)
-    product = review.product
-    review.delete()
-    return redirect(reverse('reviews:review', kwargs={'id': product.id}))
-
+    review.delete() 
+    return JsonResponse({'status': 'DELETED', 'message': 'Review Deleted'})
