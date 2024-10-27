@@ -70,22 +70,16 @@
     white-space: nowrap;
 }
 
-.categories a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-}
-
 .product-container {
+    justify-content: space-around;
+    align-items: center;
+    justify-items: center;
+    align-content: space-around;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 0.25fr));
     gap: 20px;
     padding: 20px;
-    margin-bottom: 0;
+    margin: 0 auto;
 }
 
 .product-card {
@@ -132,14 +126,15 @@
     text-align: left;
 }
 
-.product-info .price-button-container {
+.product-info .delete-detail-buttons-container {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .product-info .price {
-    font-size: 14px;
+    font-size: 18px;
     color: black;
     margin: 0;
 }
@@ -192,7 +187,6 @@
     cursor: default;
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
     .categories {
         flex-direction: column;
@@ -221,6 +215,18 @@
         font-size: 12px;
     }
 }
+
+.deleteProduct {
+    color: #f56565; 
+    padding: 0.5rem; 
+    border-radius: 9999px; 
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.deleteProduct:hover {
+    color: #c53030; 
+    background-color: rgb(243, 221, 221); 
+}
 </style>
 {% endblock meta %}
 
@@ -233,6 +239,9 @@
         </form>
     </div>
     <div class="categories">
+        {% if current_user.role == 'owner' %}
+        <a href="{% url 'catalog:add_product' %}">Add Product</a>
+        {% endif %}
         <a href="?kategori=semua&search={{ search_query }}" class="{% if kategori == 'Semua' %}active{% endif %}">Semua</a>
         <a href="?kategori=makanan_minuman&search={{ search_query }}" class="{% if kategori == 'Makanan/Minuman' %}active{% endif %}">Makanan/Minuman</a>
         <a href="?kategori=kerajinan_tangan&search={{ search_query }}" class="{% if kategori == 'Kerajinan Tangan' %}active{% endif %}">Kerajinan</a>
@@ -241,6 +250,44 @@
     </div>
   </div>
 
+
+
+  {% if current_user.role == 'owner' %}
+  <div class="product-container">
+    {% for product in page_obj %}
+      <div class="product-card">
+        <div class="product-image">
+            {% if product.gambar_file %}
+                <img src="{{ product.gambar_file.url }}" alt="{{ product.nama }}" />
+            {% else %}
+                <img src="{{ product.gambar }}" alt="{{ product.nama }}" />
+            {% endif %}
+        </div>
+        <div class="product-info">
+          <h3>{{ product.nama }}</h3>
+          <p class="price">Rp{{ product.harga }}</p>
+          <div class="delete-detail-buttons-container">
+            <a href="/product/{{ product.id }}" class="details-link">See Detail</a>
+            <form action="{% url 'catalog:delete_product' product.id %}" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus produk ini?');">
+                {% csrf_token %}
+                <button type="submit" class="deleteProduct">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" 
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                    </svg>
+                </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    {% empty %}
+      <div style="text-align: right;">Tidak ada produk tersedia.</div>
+    {% endfor %}
+  </div>
+  {% elif current_user.role == 'user' %}
   <div class="product-container">
     {% for product in page_obj %}
       <div class="product-card">
@@ -249,7 +296,7 @@
         </div>
         <div class="product-info">
           <h3>{{ product.nama }}</h3>
-          <div class="price-button-container">
+          <div class="delete-detail-buttons-container">
             <p class="price">Rp{{ product.harga }}</p>
             <a href="/product/{{ product.id }}" class="details-link">See Detail</a>
           </div>
@@ -259,6 +306,7 @@
       <div style="text-align: center;">No products available.</div>
     {% endfor %}
   </div>
+  {% endif %}
 
   <div class="pagination">
     <span class="change-page-links">
