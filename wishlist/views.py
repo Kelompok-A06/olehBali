@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 import authentication
 from .models import Wishlist
@@ -7,7 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from catalog.models import Product
-from .forms import AddWishlistStatusForm
 
 @login_required(login_url='/login')
 def show_wishlist(request):
@@ -23,19 +22,6 @@ def delete_wishlist(request, product_id):
     wishlists = Wishlist.objects.filter(user=request.user, product__id=product_id)
     wishlists.delete()
     return redirect('wishlist:show_wishlist')
-
-@login_required(login_url='/login')
-def update_status(request, product_id):
-    wishlist_item = get_object_or_404(Wishlist, user=request.user, product__id=product_id)
-
-    if request.method == 'POST':
-        form = AddWishlistStatusForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return JsonResponse({'status': 'success'})
-    else:
-        form = AddWishlistStatusForm(instance=wishlist_item)
-    return render(request, 'wishlist/update_status.html', {'form': form, 'wishlist_item': wishlist_item})
 
 @login_required(login_url='/login')
 def show_wishlist_json(request):

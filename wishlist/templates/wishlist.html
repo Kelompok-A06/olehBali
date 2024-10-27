@@ -31,17 +31,6 @@
                 {% csrf_token %}
                 <button type="submit" class="rounded-[20px] bg-[#F39C12] text-white px-4 py-2 hover:bg-[#03A4C1]">Delete</button>
             </form>
-            <form method="post" action="{% url 'wishlist:update_status' item.id %}" >
-                {% csrf_token %}
-                {% if item.product_status == 1 %}
-                <button type="submit" class="status-badge bg-green-500 text-white px-3 py-1 rounded-full">Should Buy</button>
-                {% elif item.product_status == 2 %}
-                <button type="submit" class="status-badge bg-yellow-500 text-white px-3 py-1 rounded-full">Interested</button>
-                {% else %}
-                <button type="submit" class="status-badge bg-gray-500 text-white px-3 py-1 rounded-full">Maybe Later</button>
-                {% endif %}
-            </form>
-        
         </div>
         {% endfor %}
     </div>
@@ -58,7 +47,6 @@
     {% endif %}
     <br>
 </div>
-
 
 <script>
     function removeFromWishlist(productId) {

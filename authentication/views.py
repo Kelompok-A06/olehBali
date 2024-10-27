@@ -47,13 +47,13 @@ def login_register(request):
                 response.set_cookie('last_login', str(datetime.datetime.now()))
                 return response
             else:
-                messages.error(request, "Invalid username or password. Please try again.")
+                messages.error(request, "Invalid username or password. Please try again.", extra_tags="auth")
         
         elif 'register' in request.POST:
             register_form = CustomUserCreationForm(request.POST)  
             if register_form.is_valid():
                 register_form.save()
-                messages.success(request, 'Your account has been successfully created!')
+                messages.success(request, 'Your account has been successfully created!', extra_tags="auth")
                 return redirect('authentication:login_register') 
             else:
                 for error in register_form.non_field_errors():
