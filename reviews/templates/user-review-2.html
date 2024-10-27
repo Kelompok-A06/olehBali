@@ -3,7 +3,7 @@
         <span class="text-[#03A4C1] text-xl font-semibold">${review.username}</span>
     </div>
     <div id="comments-${review.id}" class="chat-bubble bg-[#C6E0D1] text-xl text-black">
-        <span>${review.comments}</span>
+        <span class="break-words">${review.comments}</span>
         <div class="flex flex-row-reverse mt-2">
             <button id="${review.id}" onClick="openEditModal(this.id)" class="btn btn-warning btn-sm text-white rounded-full ml-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 30 30">
