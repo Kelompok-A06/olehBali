@@ -28,7 +28,6 @@ urlpatterns = [
     path('community/', include('community.urls')),
     path('product/', include('reviews.urls')),
     path('userprofile/', include('userprofile.urls')),
-    path('asktoko/', include('askToko.urls')),
 ] 
 
 if settings.DEBUG:
