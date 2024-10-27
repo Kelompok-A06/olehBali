@@ -49,7 +49,7 @@
     <div class="container mx-auto px-4">
       <div id="post-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for post in posts %}
-        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300">
+        <div class="post-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300" data-id="{{ post.id }}">
           <!-- Header Section -->
           <div class="flex items-start justify-between mb-4">
             <!-- Author Info -->
@@ -225,7 +225,7 @@
                 </button>
                 <button 
                   type="button" 
-                  id="closePostDetailModal" 
+                  id="closePostDetail"
                   class="px-4 py-2 text-gray-600 hover:text-gray-800 transition duration-300"
                 >
                   Close
@@ -251,6 +251,12 @@ $(document).ready(function() {
         $('#createPostModal').addClass('hidden').removeClass('flex');
         $('#create-post-form')[0].reset();
     });
+
+    // Tambahkan handler untuk tombol close modal post detail
+    $('#closePostDetail').click(function() {
+        $('#postDetailModal').addClass('hidden').removeClass('flex');
+    });
+
 
     // Create Post Form Handler
     $('#create-post-form').on('submit', function(event) {
@@ -306,6 +312,9 @@ $(document).ready(function() {
     // Post Detail View
     $(document).on('click', '.view-post-detail', function() {
         const postId = $(this).data('id');
+        const cardElement = $(this).closest('.post-card');
+        
+        // Load post details
         $.get(`/community/post/${postId}/json/`, function(data) {
             const post = data[0].fields;
             $('#post-detail-content').html(`
@@ -320,14 +329,16 @@ $(document).ready(function() {
                         </div>
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">${post.title}</h2>
-                    <p class="text-gray-700">${post.content}</p>
+                    <div class="text-gray-700 overflow-y-auto">
+                        ${post.content}
+                    </div>
                 </div>
             `);
 
-            // Load comments
-            loadComments(postId);
+            // Load comments untuk modal dan card
+            loadComments(postId, cardElement);
             
-            // Set up comment form for this post
+            // Set up comment form untuk post ini
             $('#comment-form').data('post-id', postId);
             
             $('#postDetailModal').removeClass('hidden').addClass('flex');
@@ -388,13 +399,15 @@ $(document).ready(function() {
     });
 
     // Load Comments Function
-    function loadComments(postId) {
+    function loadComments(postId, cardElement = null) {
         $.ajax({
             url: `/community/post/${postId}/comments/`,
             type: 'GET',
             success: function(comments) {
+                let commentsList = '';
+                
                 if (comments && comments.length > 0) {
-                    const commentsList = comments.map(comment => `
+                    commentsList = comments.map(comment => `
                         <div class="bg-gray-50 p-3 rounded-lg mb-3">
                             <div class="flex justify-between items-start">
                                 <div class="flex items-center gap-2">
@@ -423,42 +436,52 @@ $(document).ready(function() {
                             <p class="text-sm text-gray-700 mt-2">${comment.content}</p>
                         </div>
                     `).join('');
-                    $('#comments-list').html(commentsList);
                 } else {
-                    $('#comments-list').html('<p class="text-center text-gray-500 italic">No comments yet</p>');
+                    commentsList = '<p class="text-center text-gray-500 italic">No comments yet</p>';
+                }
+
+                // Update comments di modal
+                $('#comments-list').html(commentsList);
+
+                // Update comments di card jika ada
+                if (cardElement) {
+                    cardElement.find('.card-comments-list').html(commentsList);
                 }
             },
             error: function() {
-                $('#comments-list').html('<p class="text-center text-red-500">Error loading comments</p>');
+                const errorMessage = '<p class="text-center text-red-500">Error loading comments</p>';
+                $('#comments-list').html(errorMessage);
+                if (cardElement) {
+                    cardElement.find('.card-comments-list').html(errorMessage);
+                }
             }
         });
     }
 
     // Add Comment Handler for both post detail modal and card comments
     $('#comment-form').on('submit', function(e) {
-        e.preventDefault();
-        const postId = $(this).data('post-id');
-        const content = $(this).find('textarea').val();
+    e.preventDefault();
+    const postId = $(this).data('post-id');
+    const content = $(this).find('textarea').val();
+    const cardElement = $(`.post-card[data-post-id="${postId}"]`);
 
-        if (!content.trim()) {
-            return;
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: `/community/post/${postId}/comments/create/`,
-            data: {
-                content: content,
-                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
-            },
-            success: function(response) {
-                if (response.success) {
-                    $('#comment-form')[0].reset();
-                    loadComments(postId);
-                }
+    $.ajax({
+        type: 'POST',
+        url: `/community/post/${postId}/comments/create/`,
+        data: {
+            content: content,
+            csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function(response) {
+            if (response.success) {
+                $('#comment-form')[0].reset();
+                // Muat ulang komentar pada modal dan card
+                loadComments(postId, cardElement);
             }
-        });
-    });
+          }
+      });
+  });
+
 
     // Delete Comment Handler
     $(document).on('click', '.deleteComment', function(e) {
