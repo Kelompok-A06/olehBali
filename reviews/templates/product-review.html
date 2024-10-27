@@ -30,7 +30,7 @@
     }
 
     async function getChosenReviews(reviewId){
-        const url = `/reviews/api/get/${reviewId}`;
+        const url = `/product/api/get/${reviewId}`;
         return fetch(url).then((res) => res.json());
     }
 
@@ -77,7 +77,7 @@
 
     function deleteReview(reviewId) {
         console.log(reviewId)
-        fetch(`/reviews/delete/${reviewId}`, {
+        fetch(`/product/delete/${reviewId}`, {
             method: 'DELETE',
         })
         .then(response => refreshReviews())
