@@ -1,0 +1,24 @@
+<dialog id="delete_modal_${review.id}" class="modal">
+    <div class="modal-box bg-white border-2 border-[#C6E0D1] rounded-lg text-black shadow-lg">
+        <h2 class="text-lg font-bold text-[#FE9642]">Confirm Deletion</h2>
+        <p class="py-4 text-gray-700">
+            Apakah Anda yakin untuk menghapus review ini? Tindakan ini tidak dapat dibatalkan.
+        </p>
+        <div class="modal-action">
+            <button 
+                type="button"
+                onclick="deleteReview(${review.id})" 
+                class="btn bg-[#FE9642] hover:bg-[#03A4C1] text-white" 
+            >
+                Delete
+            </button>
+            <button 
+                type="button" 
+                class="btn bg-gray-300 hover:bg-gray-400 text-black" 
+                onclick="document.getElementById('delete_modal_${review.id}').close();"
+            >
+                Cancel
+            </button>
+        </div>
+    </div>
+</dialog>

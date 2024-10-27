@@ -5,6 +5,7 @@
         
         <form id="reviewForm">
             {% csrf_token %}
+            <input type="hidden" id="review_id" name="review_id" value=""> 
             <!-- Ratings Field -->
             <div class="form-control">
                 <label for="ratings" class="label text-[#03A4C1]">Rating</label>
@@ -26,7 +27,7 @@
             
             <div class="modal-action">
                 <button type="submit" id="submitProductEntry" class="btn bg-[#03A4C1] hover:bg-[#28D7CE] text-white">Submit Review</button>
-                <button type="button" class="btn bg-gray-300 hover:bg-gray-400 text-black" onclick="document.getElementById('review_modal').close();">Close</button>
+                <button type="button" class="btn bg-gray-300 hover:bg-gray-400 text-black" onclick="closeReviewModal();">Close</button>
             </div>
         </form>
     </div>
