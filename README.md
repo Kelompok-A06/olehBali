@@ -28,9 +28,6 @@ Rincian fitur modul ini adalah sebagai berikut.
 - Pengguna dapat melihat detail akun mereka yang meliputi username, password, email, nomor telepon, dan nama toko (jika pengguna adalah pemilik toko).
 - Pengguna juga dapat mengubah detail akunnya.
 - Pengguna dapat memilih menghapus akunnya secara permanen.
-- Pengguna dapat melihat daftar produk yang telah disimpan dalam wishlist mereka.
-- Menambah produk ke wishlist dari halaman produk atau katalog dengan sekali klik.
-- Pengguna dapat menghapus produk dari wishlist.
 
 Dikerjakan oleh : Nur Alya Khairina
 
@@ -71,6 +68,16 @@ Fitur-fitur dari modul ini meliputi:
 - Admin dapat membuat konten baru di berbagai bagian website, termasuk menambahkan kategori produk, pengumuman, atau informasi baru di halaman utama.
 - Admin dapat meninjau dan melihat semua konten yang sudah ada di website, termasuk halaman, postingan forum, atau ulasan pengguna.
 - Admin dapat menghapus konten, postingan forum, dan ulasan pengguna yang tidak relevan, melanggar kebijakan, atau sudah usang.
+
+Dikerjakan oleh : Kadek Savitri
+
+### 6. Wishlist
+
+Fitur-fitur dari modul ini meliputi:
+
+- Pengguna dapat melihat daftar produk yang telah disimpan dalam wishlist mereka.
+- Menambah produk ke wishlist dari halaman produk atau katalog dengan sekali klik.
+- Pengguna dapat menghapus produk dari wishlist.
 
 Dikerjakan oleh : Kadek Savitri
 
