@@ -1,11 +1,6 @@
 import datetime
-from django import forms
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
+from userprofile.models import Profile
 from .models import User
 from .forms import CustomUserCreationForm
 from django.http import HttpResponseRedirect
@@ -15,13 +10,26 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import User
+from reviews.models import Reviews
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login')
 def show_main(request):
+    profile = Profile.objects.get_or_create(
+        user=request.user,
+        defaults={
+            'name': request.user.username,  
+            'email': request.user.email,    
+        }
+    )
+
+    reviews = Reviews.objects.all()
     context = {
+        'user_name': request.user.username,
+        'profile' : profile[0],
         'user' : request.user,
+        'reviews' : reviews
     }
     return render(request, "home.html", context)
 
