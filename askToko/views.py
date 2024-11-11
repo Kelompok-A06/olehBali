@@ -77,3 +77,6 @@ def show_json_by_id(request, question_id):
     question = get_object_or_404(Question, id=question_id)
     question_data = serializers.serialize('json', [question])
     return JsonResponse({'data': question_data})
+
+def ask_toko(request):
+    return render(request, 'askToko/asktoko.html')  # Pastikan path template sesuai
