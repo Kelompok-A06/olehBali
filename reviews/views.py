@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect
 from catalog.models import Product
 from .models import Reviews
@@ -78,6 +79,24 @@ def add_review(request, id):
         review.save()
         return JsonResponse({'status': 'UPDATED'}, status=200)
 
+
+@csrf_exempt
+def create_review_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        id = data["id"]
+        new_review = Reviews.objects.create(
+            user=request.user, 
+            product=Product.objects.get(pk=id),
+            ratings=int(data["ratings"]),
+            comments=data["comments"],
+        )
+
+        new_review.save()
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+    
 @login_required(login_url='/login')
 @csrf_exempt
 def delete_review_json(request, id):
