@@ -135,7 +135,23 @@ def register_flutter(request):
             "status": False,
             "message": "Invalid request method."
         }, status=400)
-    
+
+@csrf_exempt
+def logout_flutter(request):
+    username = request.user.username
+    try:
+        logout(request)
+        return JsonResponse({
+            "username": username,
+            "status": True,
+            "message": "Logout berhasil!"
+        }, status=200)
+    except:
+        return JsonResponse({
+        "status": False,
+        "message": "Logout gagal."
+        }, status=401)
+
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('authentication:login_register'))
