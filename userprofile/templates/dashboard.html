@@ -175,7 +175,7 @@
             <div class="avatar-upload mb-6">
               <div class="avatar-preview">
                 <img id="avatarPreview" 
-                     src="{% if profile.avatar %}{{ profile.avatar.url }}{% else %}{% static 'avatars/default_avatar.png' %}{% endif %}"
+                     src="{% if profile.avatar %}{{ MEDIA_URL }}{{ profile.avatar.url }}{% else %}{% static 'avatars/default_avatar.png' %}{% endif %}"
                      alt="Profile Avatar" />
               </div>
               <div class="mt-2">
