@@ -85,14 +85,27 @@ def create_review_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         id = int(data["id"])
-        new_review = Reviews.objects.create(
-            user=request.user, 
-            product=Product.objects.get(pk=id),
-            ratings=int(data["ratings"]),
-            comments=data["comments"],
-        )
-        new_review.save()
-        return JsonResponse({"status": "success"}, status=200)
+        user=request.user 
+        product=Product.objects.get(pk=id)
+        ratings=int(data["ratings"])
+        comments=data["comments"]
+        review_id = data["review_id"]
+        if not review_id:
+            new_review = Reviews.objects.create(
+                user=user, 
+                product=product,
+                ratings=ratings,
+                comments=comments,
+            )
+            new_review.save()
+            return JsonResponse({"status": "success"}, status=201)
+        else:
+            review_id = int(review_id)
+            review = Reviews.objects.get(pk=review_id, user=user, product=product)
+            review.ratings = ratings
+            review.comments = comments
+            review.save()
+            return JsonResponse({"status": "updated"}, status=200)
     else:
         return JsonResponse({"status": "error"}, status=401)
     
