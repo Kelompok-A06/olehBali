@@ -84,14 +84,13 @@ def add_review(request, id):
 def create_review_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        id = data["id"]
+        id = int(data["id"])
         new_review = Reviews.objects.create(
             user=request.user, 
             product=Product.objects.get(pk=id),
             ratings=int(data["ratings"]),
             comments=data["comments"],
         )
-
         new_review.save()
         return JsonResponse({"status": "success"}, status=200)
     else:
