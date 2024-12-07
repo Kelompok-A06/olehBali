@@ -56,6 +56,7 @@ def login_register(request):
         elif 'register' in request.POST:
             register_form = CustomUserCreationForm(request.POST)  
             if register_form.is_valid():
+                
                 register_form.save()
                 messages.success(request, 'Your account has been successfully created!', extra_tags="auth")
                 return redirect('authentication:login_register') 
