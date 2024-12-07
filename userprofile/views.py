@@ -118,19 +118,8 @@ def update_profile(request, id):
 
 def get_profile(request):
     try:
-        profile = Profile.objects.get(user=request.user)
-        response_data = {
-            'status': 'success',
-            'data': {
-                'name': profile.name,
-                'phone_number': profile.phone_number,
-                'email': profile.email,
-                'birthdate': profile.birthdate.strftime('%Y-%m-%d') if profile.birthdate else None,
-                'avatar_url': profile.avatar.url if profile.avatar else None,
-                'role': request.user.role,  
-            }
-        }
-        return JsonResponse(response_data)
+        profile = Profile.objects.filter(user=request.user)
+        return HttpResponse(serializers.serialize("json", profile), content_type="application/json")
     except Profile.DoesNotExist:
         return JsonResponse({'status': 'error', 'message': 'Profile not found'}, status=404)
 
