@@ -27,6 +27,24 @@ def review_json_all(request):
     return HttpResponse(serializers.serialize("json", reviews), content_type="application/json")
 
 @login_required(login_url='/login')
+def review_json_all_flutter(request):
+    reviews = Reviews.objects.all()
+    review_data = [
+        {
+            'model' : 'reviews.reviews',
+            'pk' : review.pk,
+            'fields' : {
+                'user' : review.user.pk, 
+                'ratings': review.ratings,
+                'comments': review.comments,
+                'username': review.user.username, 
+            }
+        }
+        for review in reviews
+    ]
+    return JsonResponse(review_data, safe=False)
+
+@login_required(login_url='/login')
 def review_json(request, id):
     product = Product.objects.get(pk=id)
     reviews = Reviews.objects.filter(product=product)
