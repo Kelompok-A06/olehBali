@@ -1,6 +1,7 @@
 
 # userprofile/views.py
 
+import base64
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from .forms import UserProfileForm, DeleteAccountForm
@@ -16,6 +17,7 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_exempt
+from django.core.files.base import ContentFile
 
 
 @login_required
@@ -115,39 +117,65 @@ def update_profile(request, id):
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)
 
 
+def get_user_role(request):
+    return JsonResponse({
+        'role': request.user.role  
+    })
 
 def get_profile(request):
     try:
-        profile = Profile.objects.filter(user=request.user)
-        return HttpResponse(serializers.serialize("json", profile), content_type="application/json")
+        profile, created = Profile.objects.get_or_create(
+            user=request.user,
+            defaults={
+                'name': request.user.username,
+                'email': request.user.email,
+                'phone_number': '',
+                'birthdate': None
+            }
+        )
+        
+        # Return the profile (either existing or newly created)
+        return HttpResponse(
+            serializers.serialize("json", [profile]), 
+            content_type="application/json"
+        )
     except Profile.DoesNotExist:
         return JsonResponse({'status': 'error', 'message': 'Profile not found'}, status=404)
 
 
 @login_required
 @csrf_exempt
-def update_profile_flutter(request, id):
+def update_profile_flutter(request):
     if request.method == 'POST':
         try:
             profile, created = Profile.objects.get_or_create(
                 user=request.user,
                 defaults={
-                    'name': '',
+                    'name': request.user.username,
                     'phone_number': '',
-                    'email': '',
+                    'email': request.user.email,
                     'birthdate': None,
                 }
             )
 
             data = json.loads(request.body)
             
-            profile.name = data.get('name', profile.name)
-            profile.phone_number = data.get('phone_number', profile.phone_number)
-            profile.email = data.get('email', profile.email)
-            profile.birthdate = data.get('birthdate', profile.birthdate)
-
-            if 'avatar' in request.FILES:
-                profile.avatar = request.FILES['avatar']
+            if 'name' in data:
+                profile.name = data['name']
+            if 'phone_number' in data:
+                profile.phone_number = data['phone_number']
+            if 'email' in data:
+                profile.email = data['email']
+            if 'birthdate' in data:
+                profile.birthdate = data['birthdate']
+            if 'avatar' in data:
+                format, imgstr = data['avatar'].split(';base64,') if ';base64,' in data['avatar'] else ('', data['avatar'])
+                ext = format.split('/')[-1] if format else 'jpg'
+                
+                file_name = f'avatar_{request.user.id}.{ext}'
+            
+                data = ContentFile(base64.b64decode(imgstr), name=file_name)
+                profile.avatar.save(file_name, data, save=False)
             
             profile.save()
             
@@ -159,7 +187,7 @@ def update_profile_flutter(request, id):
                     'phone_number': profile.phone_number,
                     'email': profile.email,
                     'birthdate': profile.birthdate,
-                    'avatar_url': profile.avatar.url if profile.avatar else None
+                    'avatar': profile.avatar.url if profile.avatar else '',
                 }
             }
             return JsonResponse(response_data)
@@ -204,19 +232,21 @@ def delete_account(request):
     else:
         return JsonResponse({'status': 'method_not_allowed'}, status=405)
 
-
+@csrf_exempt
 def delete_account_flutter(request):
-    if request.method == 'DELETE':
+    if request.method == 'POST': 
         try:
             data = json.loads(request.body)
 
             if data.get('confirm'):  
                 user = request.user
-                logout(request)  
-                user.delete()  
+                logout(request)
+                user.delete()
+                
                 return JsonResponse({
                     'status': 'success',
-                    'message': 'Account successfully deleted'
+                    'message': 'Account successfully deleted',
+                    'redirect_url': str(reverse_lazy('authentication:login_register'))
                 }, status=200)
             else:
                 return JsonResponse({
@@ -228,6 +258,11 @@ def delete_account_flutter(request):
                 'status': 'error', 
                 'message': 'Invalid JSON data.'
             }, status=400)
+        except Exception as e:
+            return JsonResponse({
+                'status': 'error',
+                'message': str(e)
+            }, status=500)
     else:
         return JsonResponse({
             'status': 'error',
