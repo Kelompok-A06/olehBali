@@ -38,6 +38,7 @@ def review_json_all_flutter(request):
                 'ratings': review.ratings,
                 'comments': review.comments,
                 'username': review.user.username, 
+                'productName' : review.product.nama,
             }
         }
         for review in reviews
