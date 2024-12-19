@@ -238,3 +238,42 @@ def show_comments_xml(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     comments = post.comments.all()
     return HttpResponse(serializers.serialize("xml", comments), content_type="application/xml")
+
+# views.py
+@login_required
+def create_post_flutter(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.created_at = timezone.now()
+            post.save()
+            return JsonResponse({
+                'success': True,
+                'post_id': post.id,
+                'title': post.title,
+                'content': post.content,
+                'author': post.author.username,
+                'created_at': post.created_at.strftime('%b %d, %Y %H:%M'),
+            })
+        else:
+            return JsonResponse({'success': False, 'error': 'Invalid form data'}, status=400)
+    else:
+        form = PostForm()
+    return render(request, 'community/create_post.html', {'form': form})
+
+# views.py
+def get_comments(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    comments = post.comments.all().order_by('-created_at')
+    
+    comments_data = [{
+        'id': comment.id,
+        'content': comment.content,
+        'author': comment.author.username,
+        'created_at': comment.created_at.strftime('%b %d, %Y %H:%M'),
+        'is_author': comment.author == request.user
+    } for comment in comments]
+    
+    return JsonResponse(comments_data, safe=False)
