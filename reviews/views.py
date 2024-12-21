@@ -137,7 +137,6 @@ def delete_review_flutter(request):
     review.delete() 
     return JsonResponse({'status': 'DELETED', 'message': 'Review Deleted'}, status=200)
 
-
 @login_required(login_url='/login')
 @csrf_exempt
 def delete_review_json(request, id):
