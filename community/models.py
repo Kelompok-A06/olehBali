@@ -6,8 +6,8 @@ from authentication.models import User
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
-    title = models.CharField(max_length=255)
-    content = models.TextField()
+    title = models.CharField(max_length=255, null=True)
+    content = models.TextField(null=True)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -16,7 +16,7 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    content = models.TextField()
+    content = models.TextField(null=True)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
