@@ -134,7 +134,6 @@ def get_profile(request):
             }
         )
         
-        # Return the profile (either existing or newly created)
         return HttpResponse(
             serializers.serialize("json", [profile]), 
             content_type="application/json"
