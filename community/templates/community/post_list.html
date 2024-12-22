@@ -342,36 +342,37 @@ $(document).ready(function() {
     // Post Detail View
     $(document).on('click', '.view-post-detail', function() {
         const postId = $(this).data('id');
-        const cardElement = $(this).closest('.post-card');
         
-        // Load post details
-        $.get(`/community/post/${postId}/json/`, function(data) {
-            const post = data[0].fields;
-            $('#post-detail-content').html(`
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-[#21aec7] rounded-full flex items-center justify-center shadow-md">
-                            <div class="w-8 h-8 bg-white rounded-full"></div>
+        // Load post details using the correct endpoint
+        $.get(`/community/post/${postId}/json/`, function(response) {
+            if (response.status && response.data) {
+                const post = response.data;  // Adjust to use the correct response structure
+                $('#post-detail-content').html(`
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#21aec7] rounded-full flex items-center justify-center shadow-md">
+                                <div class="w-8 h-8 bg-white rounded-full"></div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-800">${post.author}</h3>
+                                <p class="text-sm text-gray-600">${post.created_at}</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-gray-800">${post.author}</h3>
-                            <p class="text-sm text-gray-600">${post.created_at}</p>
+                        <h2 class="text-2xl font-bold text-gray-800">${post.title}</h2>
+                        <div class="text-gray-700 overflow-y-auto">
+                            ${post.content}
                         </div>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">${post.title}</h2>
-                    <div class="text-gray-700 overflow-y-auto">
-                        ${post.content}
-                    </div>
-                </div>
-            `);
+                `);
 
-            // Load comments untuk modal dan card
-            loadComments(postId, cardElement);
-            
-            // Set up comment form untuk post ini
-            $('#comment-form').data('post-id', postId);
-            
-            $('#postDetailModal').removeClass('hidden').addClass('flex');
+                // Load comments
+                loadComments(postId);
+                
+                // Set up comment form for this post
+                $('#comment-form').data('post-id', postId);
+                
+                $('#postDetailModal').removeClass('hidden').addClass('flex');
+            }
         });
     });
 
@@ -392,40 +393,6 @@ $(document).ready(function() {
                 }
             });
         }
-    });
-
-    $(document).on('click', '.view-post-detail', function() {
-        const postId = $(this).data('id');
-        
-        // Load post details
-        $.get(`/community/post/${postId}/json/`, function(data) {
-            const post = data[0].fields;
-            $('#post-detail-content').html(`
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-[#21aec7] rounded-full flex items-center justify-center shadow-md">
-                            <div class="w-8 h-8 bg-white rounded-full"></div>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-gray-800">${post.author}</h3>
-                            <p class="text-sm text-gray-600">${post.created_at}</p>
-                        </div>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-800">${post.title}</h2>
-                    <div class="text-gray-700 overflow-y-auto">
-                        ${post.content}
-                    </div>
-                </div>
-            `);
-
-            // Load comments
-            loadComments(postId);
-            
-            // Set up comment form for this post
-            $('#comment-form').data('post-id', postId);
-            
-            $('#postDetailModal').removeClass('hidden').addClass('flex');
-        });
     });
 
     // Load Comments Function
