@@ -11,6 +11,14 @@ class ProductForm(forms.ModelForm):
         product = super().save(commit=False)  
         if toko:
             product.toko = toko  
+        
+        kategori_display = dict(Product.CATEGORY_TYPES).get(product.kategori)
+        if kategori_display:
+            product.kategori = kategori_display  
+        
+        if not product.gambar:  
+            product.gambar = ''  
+        
         if commit:
             product.save()
         return product
