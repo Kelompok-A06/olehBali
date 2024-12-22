@@ -138,7 +138,6 @@ def show_wishlist_flutter(request):
             }
             for product in Product.objects.filter(wishlist__user=request.user)
         ]
-
         return JsonResponse({'wishlist_items': wishlist_items}, safe=False, status=200)
     except Exception as e:
         return JsonResponse({"status": "error", "message": str(e)}, status=500)
