@@ -7,7 +7,7 @@ class Product(models.Model):
         ('kerajinan_tangan', 'Kerajinan Tangan'),
         ('makanan_minuman', 'Makanan/Minuman'),
         ('pakaian', 'Pakaian'),
-        ('lain_lain', 'Lain-lain'),
+        ('lain_lain', 'Lain - Lain'),
     ]
 
     
