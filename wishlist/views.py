@@ -10,7 +10,7 @@ from catalog.models import Product
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
-@login_required(login_url='/login')
+# @login_required(login_url='/login')
 def show_wishlist(request):
     wishlist_items = Product.objects.filter(wishlist__user=request.user)
     context = {
@@ -33,7 +33,7 @@ def add_wishlist(request, product_id):
     wishlist_item, created = Wishlist.objects.get_or_create(user=user, product=product)
     return redirect('catalog:catalog')
 
-@login_required(login_url='/login')
+# @login_required(login_url='/login')
 def show_wishlist_json(request):
     wishlist_items = [
         {
@@ -125,7 +125,6 @@ def delete_wishlist_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Invalid request method"}, status=400)
 
-@login_required(login_url='/login')
 def show_wishlist_flutter(request):
     try:
         wishlist_items = [
