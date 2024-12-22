@@ -39,6 +39,7 @@ def review_json_all_flutter(request):
                 'comments': review.comments,
                 'username': review.user.username, 
                 'productName' : review.product.nama,
+                'productId' : review.product.pk,
             }
         }
         for review in reviews
@@ -128,6 +129,14 @@ def create_review_flutter(request):
     else:
         return JsonResponse({"status": "error"}, status=401)
     
+@csrf_exempt
+def delete_review_flutter(request):
+    data = json.loads(request.body)
+    id = int(data["id"])
+    review = Reviews.objects.get(pk=id)
+    review.delete() 
+    return JsonResponse({'status': 'DELETED', 'message': 'Review Deleted'}, status=200)
+
 @login_required(login_url='/login')
 @csrf_exempt
 def delete_review_json(request, id):

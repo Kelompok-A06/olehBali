@@ -18,4 +18,5 @@ urlpatterns = [
     path('post/<int:post_id>/comments/create/', create_comment, name='create_comment'),  # Menambahkan komentar pada post
     path('comment/<int:comment_id>/delete/', delete_comment, name='delete_comment'), # Menghapus komentar berdasarkan ID
     path('post/<int:post_id>/update/', update_post, name='update_post'),  # Mengupdate post berdasarkan ID
+    path('create-post-flutter/', create_post_flutter, name='create_post_flutter'),  # Membuat post baru dari Flutter
 ]
